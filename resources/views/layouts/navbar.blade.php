@@ -22,7 +22,7 @@
                         </li>
                         <li>
                             <a class="transparent-bg brd-rd4 mg-r-15" href="{{ route('auth.login.index') }}" title="Masuk" itemprop="url">Masuk</a>
-                            <a class="red-bg brd-rd4" href="register-reservation.html" title="Daftar" itemprop="url">Daftar</a>
+                            <a class="red-bg brd-rd4" href="{{ route('auth.register.index') }}" title="Daftar" itemprop="url">Daftar</a>
                         </li>
                     </ul>
                 </div>
