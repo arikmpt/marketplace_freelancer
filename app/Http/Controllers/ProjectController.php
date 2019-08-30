@@ -10,4 +10,9 @@ class ProjectController extends Controller
     {
         return view('pages.projects.guest.list');
     }
+
+    public function guestDetail()
+    {
+        return view('pages.projects.guest.detail');
+    }
 }

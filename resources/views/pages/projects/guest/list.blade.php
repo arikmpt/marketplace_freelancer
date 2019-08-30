@@ -50,7 +50,7 @@
                                             <div class="col-md-12 col-sm-12 col-lg-12">
                                                 <div class="featured-restaurant-box with-bg style2 brd-rd12 wow fadeIn" data-wow-delay="0.2s">
                                                     <div class="featured-restaurant-info">
-                                                        <h4 itemprop="headline"><a href="restaurant-detail.html" title="" itemprop="url">Redesign Website</a></h4>
+                                                        <h4 itemprop="headline"><a href="{{ route('project.detail') }}" title="" itemprop="url">Redesign Website</a></h4>
                                                         <div>
                                                             <span class="food-types">Harga:</span>
                                                             <span>Rp 1.200.000</span>
@@ -63,7 +63,7 @@
                                             <div class="col-md-12 col-sm-12 col-lg-12">
                                                 <div class="featured-restaurant-box with-bg style2 brd-rd12 wow fadeIn" data-wow-delay="0.2s">
                                                     <div class="featured-restaurant-info">
-                                                        <h4 itemprop="headline"><a href="restaurant-detail.html" title="" itemprop="url">Redesign Website</a></h4>
+                                                        <h4 itemprop="headline"><a href="{{ route('project.detail') }}" title="" itemprop="url">Redesign Website</a></h4>
                                                         <div>
                                                             <span class="food-types">Harga:</span>
                                                             <span>Rp 1.200.000</span>
@@ -76,7 +76,7 @@
                                             <div class="col-md-12 col-sm-12 col-lg-12">
                                                 <div class="featured-restaurant-box with-bg style2 brd-rd12 wow fadeIn" data-wow-delay="0.2s">
                                                     <div class="featured-restaurant-info">
-                                                        <h4 itemprop="headline"><a href="restaurant-detail.html" title="" itemprop="url">Redesign Website</a></h4>
+                                                        <h4 itemprop="headline"><a href="{{ route('project.detail') }}" title="" itemprop="url">Redesign Website</a></h4>
                                                         <div>
                                                             <span class="food-types">Harga:</span>
                                                             <span>Rp 1.200.000</span>
@@ -89,7 +89,7 @@
                                             <div class="col-md-12 col-sm-12 col-lg-12">
                                                 <div class="featured-restaurant-box with-bg style2 brd-rd12 wow fadeIn" data-wow-delay="0.2s">
                                                     <div class="featured-restaurant-info">
-                                                        <h4 itemprop="headline"><a href="restaurant-detail.html" title="" itemprop="url">Redesign Website</a></h4>
+                                                        <h4 itemprop="headline"><a href="{{ route('project.detail') }}" title="" itemprop="url">Redesign Website</a></h4>
                                                         <div>
                                                             <span class="food-types">Harga:</span>
                                                             <span>Rp 1.200.000</span>
