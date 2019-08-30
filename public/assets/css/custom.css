@@ -16,3 +16,24 @@ a.red-bg {
 nav > div > ul {
     float : right;
 }
+
+.auth-form {
+    width: 40%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 5px;
+}
+
+.text-white,
+.text-white:hover {
+    color: #fff;
+}
+
+.mg-b-25 {
+    margin-bottom: 25px;
+}
+
+.mg-b-50 {
+    margin-bottom: 50px;
+}

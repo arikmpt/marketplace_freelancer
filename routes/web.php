@@ -12,3 +12,9 @@
 */
 
 Route::get('/','HomeController@index')->name('homepage');
+
+Route::group(['prefix' => 'auth','as' => 'auth.'], function () {
+    Route::group(['prefix' => 'login','as' => 'login.'], function () {
+        Route::get('/','Auth\LoginController@index')->name('index');
+    });
+});

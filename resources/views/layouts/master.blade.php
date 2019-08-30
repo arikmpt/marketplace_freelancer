@@ -42,6 +42,7 @@
         
         @include('layouts.navbar')
 
+        @yield('breadcrumb')
         @yield('content')
         
 

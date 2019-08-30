@@ -4,7 +4,7 @@
             <div class="logo">
                 <h1 itemprop="headline">
                     <a href="index-2.html" title="Home" itemprop="url">
-                        <img src="assets/images/logo2.png" alt="logo.png" itemprop="image">
+                        <img src="{{ asset('assets/images/logo2.png') }}" alt="logo.png" itemprop="image">
                     </a>
                 </h1>
             </div>
@@ -21,7 +21,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a class="transparent-bg brd-rd4 mg-r-15" href="register-reservation.html" title="Masuk" itemprop="url">Masuk</a>
+                            <a class="transparent-bg brd-rd4 mg-r-15" href="{{ route('auth.login.index') }}" title="Masuk" itemprop="url">Masuk</a>
                             <a class="red-bg brd-rd4" href="register-reservation.html" title="Daftar" itemprop="url">Daftar</a>
                         </li>
                     </ul>
