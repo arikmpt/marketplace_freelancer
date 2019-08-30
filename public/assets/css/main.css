@@ -776,7 +776,7 @@ nav > div > ul > li:last-child {
 nav > div > ul > li:before {
   content: "";
   width: 1px;
-  height: 42px;
+  height: 20px;
   background-color: #d8d7d7;
   position: absolute;
   right: 0;
@@ -789,7 +789,7 @@ nav > div > ul > li:last-child:before {display: none;}
     font-size: 12px;
     font-weight: 600;
     margin-top: 33px;
-    padding: 14px 38px;
+    padding: 14px 18px;
 }
 .menu-sec > a:hover{color: #000;}
 .menu-sec > a:focus {color: #fff;}
@@ -7108,6 +7108,8 @@ a.thanks-close:focus {color: #333;}
 }
 .featured-restaurant-box.with-bg .post-meta{padding-left: 0;}
 .about-feat.text-center > img{width: 100%;}
+
+
 
 
 
