@@ -12,7 +12,7 @@
                 <div class="menu-sec">
                     <ul>
                         <li><a href="contact.html" title="Beranda" itemprop="url">Beranda</a></li>
-                        <li><a href="contact.html" title="Pekerjaan" itemprop="url">Pekerjaan</a></li>
+                        <li><a href="{{ route('project.list') }}" title="Pekerjaan" itemprop="url">Pekerjaan</a></li>
                         <li class="menu-item-has-children"><a href="#" title="Pekerjaan" itemprop="url">Akun Saya</a>
                             <ul class="sub-dropdown">
                                 <li><a href="index-2.html" title="Pekerjaan Ku" itemprop="url">Pekerjaan Saya</a></li>

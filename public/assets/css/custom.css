@@ -37,3 +37,14 @@ nav > div > ul {
 .mg-b-50 {
     margin-bottom: 50px;
 }
+
+.food-types {
+    float: left;
+    width: auto;
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 13px;
+    margin-top: 3px;
+    margin-bottom: 13px;
+    margin-right: 15px;
+}

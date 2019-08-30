@@ -23,3 +23,9 @@ Route::group(['prefix' => 'auth','as' => 'auth.'], function () {
         Route::get('/','Auth\RegisterController@index')->name('index');
     });
 });
+
+Route::group(['prefix' => 'projects','as' => 'project.'], function () {
+
+    Route::get('/list','ProjectController@guestList')->name('list');
+
+});
