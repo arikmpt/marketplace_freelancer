@@ -12,4 +12,9 @@ class Project extends Model
         'title','slug','description','finish_day','published_budget','attachment',
         'is_expire'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }
