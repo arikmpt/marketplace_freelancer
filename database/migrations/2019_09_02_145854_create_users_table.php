@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
                 $table->unsignedBigInteger('postal_code')->nullable();
                 $table->string('phone')->nullable();
                 $table->text('about')->nullable();
+                $table->string('photo')->nullable();
                 $table->boolean('is_admin')->default(false);
                 $table->timestamps();
             });
