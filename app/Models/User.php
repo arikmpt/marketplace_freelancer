@@ -13,4 +13,9 @@ class User extends Model
         'gender','address','state','city','district','sub_district',
         'postal_code','phone','about','is_admin','uuid'
     ];
+
+    public function skills()
+    {
+        return $this->hasMany(UserSkill::class, 'user_id');
+    }
 }
