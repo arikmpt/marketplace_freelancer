@@ -36,5 +36,9 @@ Route::group(['prefix' => 'projects','as' => 'project.'], function () {
 
 Route::group(['prefix' => 'backyard', 'as' => 'admin.','namespace' => 'Admin'], function () {
     
-    Route::get('dashboard', 'DashboardController@index');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
+    Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+        Route::get('/','CategoryController@index')->name('index');
+    });
 });

@@ -4,7 +4,16 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li>
+          <a href="{{ route('admin.dashboard') }}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.category.index') }}">
+              <i class="fa fa-bookmark"></i> <span>Category</span>
+            </a>
+          </li>
       </ul>
     </section>
     <!-- /.sidebar -->
