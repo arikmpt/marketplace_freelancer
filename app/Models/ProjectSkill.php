@@ -12,5 +12,8 @@ class ProjectSkill extends Model
         'name','project_id'
     ];
 
-    
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
 }

@@ -17,4 +17,9 @@ class Project extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class, 'project_id');
+    }
 }
