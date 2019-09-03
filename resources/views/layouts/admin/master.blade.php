@@ -105,6 +105,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('admin/js/demo.js') }}"></script>
 <script src="{{ asset('admin/js/datatables.min.js') }}"></script>
+@stack('scripts')
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()

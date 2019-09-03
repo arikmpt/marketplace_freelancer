@@ -15,9 +15,12 @@
             </div>
         </div>
         <div class="box-body">
-            
+            {!! $html->table() !!}
         </div>
     </div>
 
     @include('pages.admin.category.form')
 @endsection
+@push('scripts')
+    {!! $html->scripts() !!}
+@endpush
