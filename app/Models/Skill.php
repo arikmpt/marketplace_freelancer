@@ -11,4 +11,23 @@ class Skill extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+
+    public function getNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function dataTableSource()
+    {
+        return datatables($this->query())
+            ->addIndexColumn()
+            ->addColumn('action', 'components.admin.action.ajax')
+            ->toJson();
+    }
 }
+

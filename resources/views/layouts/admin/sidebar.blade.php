@@ -13,7 +13,12 @@
             <a href="{{ route('admin.category.index') }}">
               <i class="fa fa-bookmark"></i> <span>Category</span>
             </a>
-          </li>
+        </li>
+        <li>
+            <a href="{{ route('admin.skill.index') }}">
+              <i class="fa fa-microchip"></i> <span>Skill</span>
+            </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

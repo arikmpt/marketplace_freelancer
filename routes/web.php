@@ -44,4 +44,11 @@ Route::group(['prefix' => 'backyard', 'as' => 'admin.','namespace' => 'Admin'], 
         Route::put('/update','CategoryController@update')->name('update');
         Route::delete('/delete','CategoryController@delete')->name('delete');
     });
+
+    Route::group(['prefix' => 'skill', 'as' => 'skill.'], function () {
+        Route::get('/','SkillController@index')->name('index');
+        Route::post('/save','SkillController@store')->name('save');
+        Route::put('/update','SkillController@update')->name('update');
+        Route::delete('/delete','SkillController@delete')->name('delete');
+    });
 });
