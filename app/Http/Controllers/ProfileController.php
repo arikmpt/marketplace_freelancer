@@ -11,13 +11,23 @@ use App\Models\User;
 use App\Helpers\Crud;
 use Validator;
 use Auth;
+use Storage;
 
 class ProfileController extends Controller
 {
     public function my()
     {
+        $province = Province::where('name', Auth::user()->state)->first();
+        $city = Regency::where('name', Auth::user()->city)->first();
+        $district = District::where('name', Auth::user()->district)->first();
+
         return view('pages.profile.own.index')
-        ->with(['states' => Province::orderBy('name','asc')->pluck('name','name') ]);
+        ->with([
+            'states' => Province::orderBy('name','asc')->pluck('name','name'),
+            'cities' => $province ? $province->regencies->pluck('name','name') : [],
+            'districts' => $city ? $city->districts->pluck('name','name') : [],
+            'villages' => $district ? $district->villages->pluck('name','name') : [],
+            ]);
     }
 
     public function update(Request $request, User $user)
@@ -32,7 +42,15 @@ class ProfileController extends Controller
         if($validator->fails())
             return redirect()->back()->withErrors($validator)->withInput();
 
+        
+
         $data = $request->except('_token');
+
+        if($request->file('photo'))
+        {
+            $data['photo'] = $this->upload($request->file('photo'), 'profile/');
+        }
+
         $store = Crud::update($user, $data,'id', Auth::user()->id);
 
         return $store ? redirect()->route('profile.me')->with('success','Perbaruhi Profil Berhasil')
@@ -73,5 +91,14 @@ class ProfileController extends Controller
             'success' => true,
             'message' => 'Something went wrong'
         ], 500);
+    }
+
+    private function upload($data, $location)
+    {
+        $fileName = str_random(20).'.'.$data->getClientOriginalExtension();
+        $path = 'uploads/'.$location.$fileName;
+        $process = Storage::disk('public')->put($path, file_get_contents($data),'public');
+
+        return $path;
     }
 }

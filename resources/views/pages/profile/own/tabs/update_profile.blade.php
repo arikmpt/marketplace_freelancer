@@ -1,7 +1,7 @@
 <div class="tab-pane fade" id="update-profile">
         <div class="tabs-wrp brd-rd5">
             <h4 itemprop="headline">Perbaruhi Profil</h4>
-            {!! Form::open(['route' => 'profile.update']) !!}
+            {!! Form::open(['route' => 'profile.update','enctype' => 'multipart/form-data']) !!}
                 <div class="form-group">
                     <label for="">Nama</label>
                     {!! Form::text('name',Auth::user()->name, ['class' => 'form-control']) !!}
@@ -34,17 +34,17 @@
 
                 <div class="form-group">
                     <label for="">Kota / Kabupaten</label>
-                    {!! Form::select('city',[],Auth::user()->city, ['id' => 'city','class' => 'form-control select2','placeholder' => 'Pilih Kota / Kabupaten']) !!}
+                    {!! Form::select('city',$cities,Auth::user()->city, ['id' => 'city','class' => 'form-control select2','placeholder' => 'Pilih Kota / Kabupaten']) !!}
                 </div>
 
                 <div class="form-group">
                     <label for="">Kecamatan</label>
-                    {!! Form::select('district',[],Auth::user()->district, ['id' => 'district','class' => 'form-control select2','placeholder' => 'Pilih Kecamatan']) !!}
+                    {!! Form::select('district',$districts,Auth::user()->district, ['id' => 'district','class' => 'form-control select2','placeholder' => 'Pilih Kecamatan']) !!}
                 </div>
 
                 <div class="form-group">
                     <label for="">Kelurahan</label>
-                    {!! Form::select('sub_district',[],Auth::user()->sub_district, ['id' => 'village','class' => 'form-control select2','placeholder' => 'Pilih Kelurahan']) !!}
+                    {!! Form::select('sub_district',$villages,Auth::user()->sub_district, ['id' => 'village','class' => 'form-control select2','placeholder' => 'Pilih Kelurahan']) !!}
                 </div>
 
                 <div class="form-group">

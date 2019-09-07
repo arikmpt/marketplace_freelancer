@@ -23,7 +23,7 @@
                                     <div class="profile-sidebar brd-rd5 wow fadeIn" data-wow-delay="0.2s">
                                         <div class="profile-sidebar-inner brd-rd5">
                                             <div class="user-info red-bg">
-                                                <img class="brd-rd50" src="{{ Auth::user()->photo ? 'storage/'.Auth::user()->photo : 'https://via.placeholder.com/75?text=Belum Ada Foto' }}" alt="user-avatar.jpg" itemprop="image">
+                                                <img class="brd-rd50" src="{{ Auth::user()->photo ? '/storage/'.Auth::user()->photo : 'https://via.placeholder.com/75?text=Belum Ada Foto' }}" alt="user-avatar.jpg" itemprop="image" style="width :60px">
                                                 <div class="user-info-inner">
                                                     <h5 itemprop="headline"><a href="#" title="" itemprop="url">{{ Auth::user()->name }}</a></h5>
                                                     <span><a href="#" title="" itemprop="url">{{ Auth::user()->email }}</a></span>
@@ -71,6 +71,7 @@
                     success: function(res){
                         console.log(res)
                         let cities = res.data
+                        $("#city").empty()
                         $.each(cities, (key, val) => {
                             $("#city").append($("<option></option>").attr("value", val.name).text(val.name))
                         })
@@ -96,6 +97,7 @@
                     success: function(res){
                         console.log(res)
                         let cities = res.data
+                        $("#district").empty()
                         $.each(cities, (key, val) => {
                             $("#district").append($("<option></option>").attr("value", val.name).text(val.name))
                         })
@@ -121,6 +123,7 @@
                     success: function(res){
                         console.log(res)
                         let cities = res.data
+                        $("#village").empty()
                         $.each(cities, (key, val) => {
                             $("#village").append($("<option></option>").attr("value", val.name).text(val.name))
                         })
