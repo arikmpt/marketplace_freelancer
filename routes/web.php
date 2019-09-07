@@ -38,6 +38,12 @@ Route::group(['prefix' => 'profile','as' => 'profile.'], function () {
     Route::get('/me','ProfileController@my')->name('me');
     Route::post('/update', 'ProfileController@update')->name('update');
 
+    Route::group(['prefix' => 'projects','as' => 'project.'], function () {
+
+        Route::get('/','ProjectController@ownList')->name('list');
+    
+    });
+
 });
 
 

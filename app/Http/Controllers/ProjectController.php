@@ -15,4 +15,9 @@ class ProjectController extends Controller
     {
         return view('pages.projects.guest.detail');
     }
+
+    public function ownList()
+    {
+        return view('pages.projects.user.index');
+    }
 }
