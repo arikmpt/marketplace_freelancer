@@ -51,4 +51,8 @@ Route::group(['prefix' => 'backyard', 'as' => 'admin.','namespace' => 'Admin'], 
         Route::put('/update','SkillController@update')->name('update');
         Route::delete('/delete','SkillController@delete')->name('delete');
     });
+
+    Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+        Route::get('/','UserController@index')->name('index');
+    });
 });

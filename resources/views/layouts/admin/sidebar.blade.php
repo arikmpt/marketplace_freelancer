@@ -19,6 +19,11 @@
               <i class="fa fa-microchip"></i> <span>Skill</span>
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.user.index') }}">
+              <i class="fa fa-users"></i> <span>User</span>
+            </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

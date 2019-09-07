@@ -22,4 +22,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserSkill::class, 'user_id');
     }
+
+    public function dataTableSource()
+    {
+        return datatables($this->query())
+            ->addIndexColumn()
+            ->toJson();
+    }
 }
