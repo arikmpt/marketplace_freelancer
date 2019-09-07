@@ -1,7 +1,7 @@
 <div class="tab-pane fade" id="update-profile">
         <div class="tabs-wrp brd-rd5">
             <h4 itemprop="headline">Perbaruhi Profil</h4>
-            {!! Form::open() !!}
+            {!! Form::open(['route' => 'profile.update']) !!}
                 <div class="form-group">
                     <label for="">Nama</label>
                     {!! Form::text('name',Auth::user()->name, ['class' => 'form-control']) !!}
@@ -24,27 +24,27 @@
 
                 <div class="form-group">
                     <label for="">Alamat</label>
-                    {!! Form::textarea('address',Auth::user()->address, ['class' => 'form-control','placeholder' => 'Pilih Jenis Kelamin']) !!}
+                    {!! Form::textarea('address',Auth::user()->address, ['class' => 'form-control','placeholder' => 'Masukan Alamat Anda']) !!}
                 </div>
 
                 <div class="form-group">
                     <label for="">Provinsi</label>
-                    {!! Form::select('state',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control select2','placeholder' => 'Pilih Jenis Kelamin']) !!}
+                    {!! Form::select('state',$states,Auth::user()->state, ['id' => 'state','class' => 'form-control select2','placeholder' => 'Pilih Propinsi']) !!}
                 </div>
 
                 <div class="form-group">
-                    <label for="">Kota</label>
-                    {!! Form::select('city',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control select2','placeholder' => 'Pilih Jenis Kelamin']) !!}
+                    <label for="">Kota / Kabupaten</label>
+                    {!! Form::select('city',[],Auth::user()->city, ['id' => 'city','class' => 'form-control select2','placeholder' => 'Pilih Kota / Kabupaten']) !!}
                 </div>
 
                 <div class="form-group">
                     <label for="">Kecamatan</label>
-                    {!! Form::select('district',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control select2','placeholder' => 'Pilih Jenis Kelamin']) !!}
+                    {!! Form::select('district',[],Auth::user()->district, ['id' => 'district','class' => 'form-control select2','placeholder' => 'Pilih Kecamatan']) !!}
                 </div>
 
                 <div class="form-group">
                     <label for="">Kelurahan</label>
-                    {!! Form::select('sub_district',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control select2','placeholder' => 'Pilih Jenis Kelamin']) !!}
+                    {!! Form::select('sub_district',[],Auth::user()->sub_district, ['id' => 'village','class' => 'form-control select2','placeholder' => 'Pilih Kelurahan']) !!}
                 </div>
 
                 <div class="form-group">
@@ -61,6 +61,8 @@
                     <label for="">Tentang Saya</label>
                     {!! Form::textarea('about',Auth::user()->about, ['class' => 'form-control','placeholder' => 'Ceritakan Tentang Diri Anda']) !!}
                 </div>
+
+                <button class="btn red-bg text-white" type="submit">Perbaruhi</button>
             {!! Form::close() !!}
         </div>
     </div>

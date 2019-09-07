@@ -183,9 +183,9 @@ $(document).ready(function(){
   }
 
   //===== Chosen =====//
-  if ($.isFunction($.fn.chosen)) {
-    $('select').chosen({});
-  }
+  // if ($.isFunction($.fn.chosen)) {
+  //   $('select').chosen({});
+  // }
 
   //===== Custom Scrollbar =====//
   if ($.isFunction($.fn.niceScroll)) {

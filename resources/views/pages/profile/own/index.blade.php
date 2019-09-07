@@ -384,6 +384,82 @@
             $('.select2').select2({
                 theme: 'bootstrap'
             });
+
+            $('#state').on('change', function() {
+                $.ajax({
+                    headers : {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    url : '{{ route("misc.getcities") }}',
+                    type : "POST",
+                    data : {
+                        state_name : $(this).val()
+                    },
+                    success: function(res){
+                        console.log(res)
+                        let cities = res.data
+                        $.each(cities, (key, val) => {
+                            $("#city").append($("<option></option>").attr("value", val.name).text(val.name))
+                        })
+                    },
+                    error: function(err) {
+                        console.log(err)
+                    }
+                })
+
+                
+            })
+
+            $('#city').on('change', function() {
+                $.ajax({
+                    headers : {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    url : '{{ route("misc.getdistricts") }}',
+                    type : "POST",
+                    data : {
+                        city_name : $(this).val()
+                    },
+                    success: function(res){
+                        console.log(res)
+                        let cities = res.data
+                        $.each(cities, (key, val) => {
+                            $("#district").append($("<option></option>").attr("value", val.name).text(val.name))
+                        })
+                    },
+                    error: function(err) {
+                        console.log(err)
+                    }
+                })
+
+                
+            })
+
+            $('#district').on('change', function() {
+                $.ajax({
+                    headers : {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    url : '{{ route("misc.getvillages") }}',
+                    type : "POST",
+                    data : {
+                        district_name : $(this).val()
+                    },
+                    success: function(res){
+                        console.log(res)
+                        let cities = res.data
+                        $.each(cities, (key, val) => {
+                            $("#village").append($("<option></option>").attr("value", val.name).text(val.name))
+                        })
+                    },
+                    error: function(err) {
+                        console.log(err)
+                    }
+                })
+
+                
+            })
+
         })
     </script>
 @endpush

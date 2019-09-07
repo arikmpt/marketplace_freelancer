@@ -62,3 +62,7 @@ nav > div > ul {
 .dashboard-profile label {
     display: block;
 }
+
+.select2-container--bootstrap {
+    width: 100% !important;
+}
