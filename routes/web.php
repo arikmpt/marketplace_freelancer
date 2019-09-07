@@ -40,5 +40,8 @@ Route::group(['prefix' => 'backyard', 'as' => 'admin.','namespace' => 'Admin'], 
 
     Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
         Route::get('/','CategoryController@index')->name('index');
+        Route::post('/save','CategoryController@store')->name('save');
+        Route::put('/update','CategoryController@update')->name('update');
+        Route::delete('/delete','CategoryController@delete')->name('delete');
     });
 });

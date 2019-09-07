@@ -24,6 +24,11 @@ class Category extends Model
         $this->attributes['name'] = strtolower($value);
     }
 
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = strtolower($value);
+    }
+
     public function getNameAttribute($value)
     {
         return ucwords($value);
@@ -31,16 +36,11 @@ class Category extends Model
 
     public function dataTableSource()
     {
-        return DataTables::of($this->query())
+        return datatables($this->query())
             ->addIndexColumn()
+            ->addColumn('action', 'components.admin.action.ajax')
             ->toJson();
     }
 
-    public function dataTableHtml(Builder $builder)
-    {
-        return $builder->columns([
-            ['data' => 'DT_RowIndex', 'name' => 'No', 'title' => 'No'],
-            ['data' => 'name', 'name' => 'name', 'title' => 'Name']
-        ]);
-    }
+    
 }
