@@ -17,6 +17,7 @@ Route::group(['prefix' => 'auth','as' => 'auth.'], function () {
 
     Route::group(['prefix' => 'login','as' => 'login.'], function () {
         Route::get('/','Auth\LoginController@index')->name('index');
+        Route::post('/','Auth\LoginController@login')->name('login');
     });
 
     Route::group(['prefix' => 'register','as' => 'register.'], function () {
@@ -29,6 +30,12 @@ Route::group(['prefix' => 'projects','as' => 'project.'], function () {
 
     Route::get('/list','ProjectController@guestList')->name('list');
     Route::get('/detail','ProjectController@guestDetail')->name('detail');
+
+});
+
+Route::group(['prefix' => 'profile','as' => 'profile.'], function () {
+
+    Route::get('/me','ProfileController@my')->name('me');
 
 });
 

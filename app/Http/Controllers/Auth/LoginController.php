@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -40,5 +43,25 @@ class LoginController extends Controller
     public function index()
     {
         return view('pages.auth.login');
+    }
+
+    public function login(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        if($validator->fails())
+            return redirect()->back()->withErrors($validator)->withInput();
+        
+        if(Auth::attempt(['email' => $request->username, 'password' => $request->password]) || Auth::attempt(['username' => $request->username, 'password' => $request->password]))
+        {
+            return redirect()->route('profile.me');
+            
+        } else {
+            return redirect()->back()->with('danger','Nama Pengguna Atau Password Anda Tidak Tepat');
+        }
+
     }
 }
