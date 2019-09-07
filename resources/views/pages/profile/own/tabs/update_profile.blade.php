@@ -29,22 +29,22 @@
 
                 <div class="form-group">
                     <label for="">Provinsi</label>
-                    {!! Form::select('state',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control','placeholder' => 'Pilih Jenis Kelamin']) !!}
+                    {!! Form::select('state',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control select2','placeholder' => 'Pilih Jenis Kelamin']) !!}
                 </div>
 
                 <div class="form-group">
                     <label for="">Kota</label>
-                    {!! Form::select('city',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control','placeholder' => 'Pilih Jenis Kelamin']) !!}
+                    {!! Form::select('city',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control select2','placeholder' => 'Pilih Jenis Kelamin']) !!}
                 </div>
 
                 <div class="form-group">
                     <label for="">Kecamatan</label>
-                    {!! Form::select('district',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control','placeholder' => 'Pilih Jenis Kelamin']) !!}
+                    {!! Form::select('district',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control select2','placeholder' => 'Pilih Jenis Kelamin']) !!}
                 </div>
 
                 <div class="form-group">
                     <label for="">Kelurahan</label>
-                    {!! Form::select('sub_district',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control','placeholder' => 'Pilih Jenis Kelamin']) !!}
+                    {!! Form::select('sub_district',['L' => 'Laki - Laki' ,'P' => 'Perempuan'],Auth::user()->gender, ['class' => 'form-control select2','placeholder' => 'Pilih Jenis Kelamin']) !!}
                 </div>
 
                 <div class="form-group">
