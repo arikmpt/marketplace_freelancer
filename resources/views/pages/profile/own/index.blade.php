@@ -23,88 +23,20 @@
                                     <div class="profile-sidebar brd-rd5 wow fadeIn" data-wow-delay="0.2s">
                                         <div class="profile-sidebar-inner brd-rd5">
                                             <div class="user-info red-bg">
-                                                <img class="brd-rd50" src="assets/images/resource/user-avatar.jpg" alt="user-avatar.jpg" itemprop="image">
+                                                <img class="brd-rd50" src="{{ Auth::user()->photo ? 'storage/'.Auth::user()->photo : 'https://via.placeholder.com/75?text=Belum Ada Foto' }}" alt="user-avatar.jpg" itemprop="image">
                                                 <div class="user-info-inner">
-                                                    <h5 itemprop="headline"><a href="#" title="" itemprop="url">BUYER DEMO</a></h5>
-                                                    <span><a href="#" title="" itemprop="url">dum3@chimpgroou.com</a></span>
-                                                    <a class="brd-rd3 sign-out-btn yellow-bg" href="#" title="" itemprop="url"><i class="fa fa-sign-out"></i> SIGN OUT</a>
+                                                    <h5 itemprop="headline"><a href="#" title="" itemprop="url">{{ Auth::user()->name }}</a></h5>
+                                                    <span><a href="#" title="" itemprop="url">{{ Auth::user()->email }}</a></span>
+                                                    <a class="brd-rd3 sign-out-btn yellow-bg" href="#" title="" itemprop="url"><i class="fa fa-sign-out"></i> Keluar</a>
                                                 </div>
                                             </div>
-                                            <ul class="nav nav-tabs">
-                                                <li class="active"><a href="#dashboard" data-toggle="tab"><i class="fa fa-dashboard"></i> DASHBOARD</a></li>
-                                                <li><a href="#my-bookings" data-toggle="tab"><i class="fa fa-file-text"></i> MY BOOKINGS</a></li>
-                                                <li><a href="#my-reviews" data-toggle="tab"><i class="fa fa-comments"></i> MY REVIEWS</a></li>
-                                                <li><a href="#my-orders" data-toggle="tab"><i class="fa fa-shopping-basket"></i> MY ORDERS</a></li>
-                                                <li><a href="#shortlists" data-toggle="tab"><i class="fa fa-heart"></i> SHORTLISTS</a></li>
-                                                <li><a href="#statement" data-toggle="tab"><i class="fa fa-wpforms"></i> STATEMENT</a></li>
-                                                <li><a href="#account-settings" data-toggle="tab"><i class="fa fa-cog"></i> ACCOUNT SETTINGS</a></li>
-                                            </ul>
+                                            @include('pages.profile.own.menu.index')
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-sm-12 col-lg-8">
                                     <div class="tab-content">
-                                        <div class="tab-pane fade in active" id="dashboard">
-                                            <div class="dashboard-wrapper brd-rd5">
-                                                <div class="welcome-note yellow-bg brd-rd5">
-                                                    <h4 itemprop="headline">WELCOME TO YOUR ACCOUNT</h4>
-                                                    <p itemprop="description">Things that get tricky are things like burgers and fries, or things that are deep-fried. We do have a couple of burger restaurants that are capable of doing a good</p>
-                                                    <img src="assets/images/resource/welcome-note-img.png" alt="welcome-note-img.png" itemprop="image">
-                                                    <a class="remove-noti" href="#" title="" itemprop="url"><img src="assets/images/close-icon.png" alt="close-icon.png" itemprop="image"></a>
-                                                </div>
-                                                <div class="dashboard-title">
-                                                    <h4 itemprop="headline">SUGGESTED RESTAURANTS</h4>
-                                                    <span>Define <a class="red-clr" href="#" title="" itemprop="url">Search criteria</a> to search for specific</span>
-                                                </div>
-                                                <div class="restaurants-list">
-                                                    <div class="featured-restaurant-box style3 brd-rd5 wow fadeInUp" data-wow-delay="0.2s">
-                                                        <div class="featured-restaurant-thumb"><a href="#" title="" itemprop="url"><img src="assets/images/resource/restaurant-logo1-1.png" alt="restaurant-logo1-1.png" itemprop="image"></a></div>
-                                                        <div class="featured-restaurant-info">
-                                                            <span class="red-clr">5th Avenue New York 68</span>
-                                                            <h4 itemprop="headline"><a href="#" title="" itemprop="url">Domino's Pizza</a></h4>
-                                                            <ul class="post-meta">
-                                                                <li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-                                                                <li><i class="flaticon-transport"></i> 30min</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="view-menu-liks">
-                                                            <span class="red-bg brd-rd4 post-likes"><i class="fa fa-heart-o"></i> 12</span>
-                                                            <a class="brd-rd3" href="#" title="" itemprop="url">View Menu</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featured-restaurant-box style3 brd-rd5 wow fadeInUp" data-wow-delay="0.3s">
-                                                        <div class="featured-restaurant-thumb"><a href="#" title="" itemprop="url"><img src="assets/images/resource/restaurant-logo1-2.png" alt="restaurant-logo1-2.png" itemprop="image"></a></div>
-                                                        <div class="featured-restaurant-info">
-                                                            <span class="red-clr">5th Avenue New York 68</span>
-                                                            <h4 itemprop="headline"><a href="#" title="" itemprop="url">Pizza Hut</a></h4>
-                                                            <ul class="post-meta">
-                                                                <li><i class="fa fa-check-circle-o"></i> Min order $40</li>
-                                                                <li><i class="flaticon-transport"></i> 30min</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="view-menu-liks">
-                                                            <span class="red-bg brd-rd4 post-likes"><i class="fa fa-heart-o"></i> 20</span>
-                                                            <a class="brd-rd3" href="#" title="" itemprop="url">View Menu</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featured-restaurant-box style3 brd-rd5 wow fadeInUp" data-wow-delay="0.4s">
-                                                        <div class="featured-restaurant-thumb"><a href="#" title="" itemprop="url"><img src="assets/images/resource/restaurant-logo1-1.png" alt="restaurant-logo1-1.png" itemprop="image"></a></div>
-                                                        <div class="featured-restaurant-info">
-                                                            <span class="red-clr">5th Avenue New York 68</span>
-                                                            <h4 itemprop="headline"><a href="#" title="" itemprop="url">Burger King</a></h4>
-                                                            <ul class="post-meta">
-                                                                <li><i class="fa fa-check-circle-o"></i> Min order $100</li>
-                                                                <li><i class="flaticon-transport"></i> 30min</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="view-menu-liks">
-                                                            <span class="red-bg brd-rd4 post-likes"><i class="fa fa-heart-o"></i> 15</span>
-                                                            <a class="brd-rd3" href="#" title="" itemprop="url">View Menu</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @include('pages.profile.own.tabs.dashboard')
                                         <div class="tab-pane fade" id="my-bookings">
                                             <div class="tabs-wrp brd-rd5">
                                                 <h4 itemprop="headline">MY BOOKINGS</h4>

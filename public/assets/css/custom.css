@@ -54,3 +54,11 @@ nav > div > ul {
     background-color: #ea1b25;
     color: #fff;
 }
+
+.dashboard-profile { 
+    padding : 15px;
+}
+
+.dashboard-profile label {
+    display: block;
+}
