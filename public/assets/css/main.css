@@ -2258,7 +2258,6 @@ footer {
 }
 /*=== Breadcrumbs =====*/
 .bread-crumbs-wrapper {
-  float: left;
   width: 100%;
 }
 .breadcrumb {

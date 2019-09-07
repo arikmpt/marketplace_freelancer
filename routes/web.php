@@ -21,6 +21,7 @@ Route::group(['prefix' => 'auth','as' => 'auth.'], function () {
 
     Route::group(['prefix' => 'register','as' => 'register.'], function () {
         Route::get('/','Auth\RegisterController@index')->name('index');
+        Route::post('/', 'Auth\RegisterController@store')->name('store');
     });
 });
 
