@@ -13,13 +13,15 @@
                     <ul>
                         <li><a href="contact.html" title="Beranda" itemprop="url">Beranda</a></li>
                         <li><a href="{{ route('project.list') }}" title="Pekerjaan" itemprop="url">Pekerjaan</a></li>
-                        <li class="menu-item-has-children"><a href="#" title="Pekerjaan" itemprop="url">Akun Saya</a>
-                            <ul class="sub-dropdown">
-                                <li><a href="index-2.html" title="Pekerjaan Ku" itemprop="url">Pekerjaan Saya</a></li>
-                                <li><a href="index2.html" title="Penawaran Ku" itemprop="url">Penawaran Saya</a></li>
-                                <li><a href="index2.html" title="Pengaturan" itemprop="url">Pengaturan</a></li>
-                            </ul>
-                        </li>
+                        @auth
+                            <li class="menu-item-has-children"><a href="#" title="Pekerjaan" itemprop="url">Akun Saya</a>
+                                <ul class="sub-dropdown">
+                                    <li><a href="index-2.html" title="Pekerjaan Ku" itemprop="url">Pekerjaan Saya</a></li>
+                                    <li><a href="index2.html" title="Penawaran Ku" itemprop="url">Penawaran Saya</a></li>
+                                    <li><a href="index2.html" title="Pengaturan" itemprop="url">Pengaturan</a></li>
+                                </ul>
+                            </li>
+                        @endauth
                         <li>
                             <a class="transparent-bg brd-rd4 mg-r-15" href="{{ route('auth.login.index') }}" title="Masuk" itemprop="url">Masuk</a>
                             <a class="red-bg brd-rd4" href="{{ route('auth.register.index') }}" title="Daftar" itemprop="url">Daftar</a>
@@ -31,7 +33,7 @@
     </div><!-- Logo Menu Section -->
 </header><!-- Header -->
 
-<div class="responsive-header">
+{{-- <div class="responsive-header">
     <div class="responsive-topbar">
         <div class="select-wrp">
             <select data-placeholder="Feel Like Eating">
@@ -143,4 +145,4 @@
             <a class="yellow-bg brd-rd4" href="register-reservation.html" title="Register" itemprop="url">REGISTER RESTAURANT</a>
         </div>
     </div><!-- Responsive Menu -->
-</div><!-- Responsive Header -->
+</div><!-- Responsive Header --> --}}
