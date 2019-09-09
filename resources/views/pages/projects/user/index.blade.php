@@ -88,7 +88,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="tab-pane fade in active" id="expire">
+                                        <div class="tab-pane fade" id="expire">
                                             <div class="tabs-wrp brd-rd5">
                                                 <h4 itemprop="headline">Proyek Lama Saya</h4>
                                                 @foreach($old_projects as $old)

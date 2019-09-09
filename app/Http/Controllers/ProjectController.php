@@ -18,12 +18,16 @@ class ProjectController extends Controller
 {
     public function guestList()
     {
-        return view('pages.projects.guest.list');
+        return view('pages.projects.guest.list')
+        ->with([
+            'projects' => Project::where('is_approve', 1)->where('created_at', '>', Carbon::now()->subDays(15))->paginate(1)
+        ]);
     }
 
     public function guestDetail()
     {
         return view('pages.projects.guest.detail');
+           
     }
 
     public function ownList(User $user)
@@ -38,6 +42,7 @@ class ProjectController extends Controller
 
     public function new()
     {
+
         return view('pages.projects.user.form.new')
             ->with([
                 'categories' => Category::pluck('name','id'),

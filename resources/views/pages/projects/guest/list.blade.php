@@ -47,58 +47,31 @@
                                     <div class="remove-ext">
                                         <div class="row">
 
-                                            <div class="col-md-12 col-sm-12 col-lg-12">
-                                                <div class="featured-restaurant-box with-bg style2 brd-rd12 wow fadeIn" data-wow-delay="0.2s">
-                                                    <div class="featured-restaurant-info">
-                                                        <h4 itemprop="headline"><a href="{{ route('project.detail') }}" title="" itemprop="url">Redesign Website</a></h4>
-                                                        <div>
-                                                            <span class="food-types">Harga:</span>
-                                                            <span>Rp 1.200.000</span>
-                                                        </div>
-                                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @foreach($projects as $project)
+                                                <div class="col-md-12 col-sm-12 col-lg-12">
+                                                    <div class="featured-restaurant-box with-bg style2 brd-rd12 wow fadeIn" data-wow-delay="0.2s">
+                                                        <div class="featured-restaurant-info">
+                                                            <h4 itemprop="headline"><a href="{{ route('project.detail') }}" title="" itemprop="url">{{ $project->title }}</a></h4>
+                                                            <div>
+                                                                <span class="food-types">Harga:</span>
+                                                                <span>Rp {{ $project->published_budget }}</span>
+                                                            </div>
+                                                            <p style="width: 100%; margin-bottom: 0;">Keahlian : 
+                                                                @foreach($project->skills as $skill)
+                                                                    {{ $skill->name.','}}
+                                                                @endforeach
+                                                            </p>
 
-                                            <div class="col-md-12 col-sm-12 col-lg-12">
-                                                <div class="featured-restaurant-box with-bg style2 brd-rd12 wow fadeIn" data-wow-delay="0.2s">
-                                                    <div class="featured-restaurant-info">
-                                                        <h4 itemprop="headline"><a href="{{ route('project.detail') }}" title="" itemprop="url">Redesign Website</a></h4>
-                                                        <div>
-                                                            <span class="food-types">Harga:</span>
-                                                            <span>Rp 1.200.000</span>
+                                                            <p style="width: 100%; margin-bottom: 25px;">Pemilik : 
+                                                                {{ $project->user->name }}
+                                                            </p>
+                                                            {!! $project->description !!}
                                                         </div>
-                                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
 
-                                            <div class="col-md-12 col-sm-12 col-lg-12">
-                                                <div class="featured-restaurant-box with-bg style2 brd-rd12 wow fadeIn" data-wow-delay="0.2s">
-                                                    <div class="featured-restaurant-info">
-                                                        <h4 itemprop="headline"><a href="{{ route('project.detail') }}" title="" itemprop="url">Redesign Website</a></h4>
-                                                        <div>
-                                                            <span class="food-types">Harga:</span>
-                                                            <span>Rp 1.200.000</span>
-                                                        </div>
-                                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12 col-sm-12 col-lg-12">
-                                                <div class="featured-restaurant-box with-bg style2 brd-rd12 wow fadeIn" data-wow-delay="0.2s">
-                                                    <div class="featured-restaurant-info">
-                                                        <h4 itemprop="headline"><a href="{{ route('project.detail') }}" title="" itemprop="url">Redesign Website</a></h4>
-                                                        <div>
-                                                            <span class="food-types">Harga:</span>
-                                                            <span>Rp 1.200.000</span>
-                                                        </div>
-                                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
+                                            {{ $projects->links() }}
                                         </div>
                                     </div>
                                 </div>
