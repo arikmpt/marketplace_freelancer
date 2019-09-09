@@ -29,7 +29,7 @@ Route::group(['prefix' => 'auth','as' => 'auth.'], function () {
 Route::group(['prefix' => 'projects','as' => 'project.'], function () {
 
     Route::get('/list','ProjectController@guestList')->name('list');
-    Route::get('/detail','ProjectController@guestDetail')->name('detail');
+    Route::get('/detail/{uuid}','ProjectController@guestDetail')->name('detail');
 
 });
 

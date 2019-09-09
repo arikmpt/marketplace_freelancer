@@ -51,7 +51,7 @@
                                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                                     <div class="featured-restaurant-box with-bg style2 brd-rd12 wow fadeIn" data-wow-delay="0.2s">
                                                         <div class="featured-restaurant-info">
-                                                            <h4 itemprop="headline"><a href="{{ route('project.detail') }}" title="" itemprop="url">{{ $project->title }}</a></h4>
+                                                            <h4 itemprop="headline"><a href="{{ route('project.detail', $project->uuid) }}" title="" itemprop="url">{{ $project->title }}</a></h4>
                                                             <div>
                                                                 <span class="food-types">Harga:</span>
                                                                 <span>Rp {{ $project->published_budget }}</span>

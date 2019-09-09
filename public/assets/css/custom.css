@@ -66,3 +66,9 @@ nav > div > ul {
 .select2-container--bootstrap {
     width: 100% !important;
 }
+
+.order-list-wrapper p {
+    width: 100%;
+    color: #000;
+    margin-bottom: 0px;
+}

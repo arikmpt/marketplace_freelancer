@@ -24,9 +24,12 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function guestDetail()
+    public function guestDetail($uuid)
     {
-        return view('pages.projects.guest.detail');
+        return view('pages.projects.guest.detail')
+            ->with([
+                'project' => Project::where('uuid', $uuid)->firstOrFail()
+            ]);
            
     }
 
