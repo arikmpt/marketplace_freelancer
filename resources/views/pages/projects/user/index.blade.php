@@ -54,9 +54,16 @@
                                                                 <span>Rp {{ $project->published_budget }}</span>
                                                             </div>
                                                             <div class="text-left">
-                                                                <p style="width: 100%">Keahlian : 
+                                                                <p style="width: 100%; margin-bottom: 0">Keahlian : 
                                                                     <span>Php, Jquery</span>
                                                                 </p>
+                                                                @if($project->is_approve == 0 && $project->is_reject == 0)
+                                                                    <p style="width: 100%"> Status : Sedang Direview Admin</p>
+                                                                @elseif($project->is_reject == 1 && $project->is_approve == 0)
+                                                                    <p style="width: 100%"> Status : Di Tolak Admin</p>
+                                                                @elseif($project->is_reject == 0 && $project->is_approve == 1)
+                                                                    <p style="width: 100%"> Status : Di Setujui Admin</p>
+                                                                @endif
                                                             </div>
                                                             {!! $project->description !!}
                                                         </div>
