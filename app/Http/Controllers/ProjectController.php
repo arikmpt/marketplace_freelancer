@@ -31,7 +31,8 @@ class ProjectController extends Controller
 
         return view('pages.projects.user.index')
             ->with([
-                'projects' => Project::where('user_id', Auth::user()->id)->where('created_at', '>', Carbon::now()->subDays(15))->get()
+                'projects' => Project::where('user_id', Auth::user()->id)->where('created_at', '>', Carbon::now()->subDays(15))->get(),
+                'old_projects' => Project::where('user_id', Auth::user()->id)->where('created_at', '<', Carbon::now()->subDays(15))->get()
             ]);
     }
 

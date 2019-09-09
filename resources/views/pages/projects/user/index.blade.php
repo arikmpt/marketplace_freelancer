@@ -74,6 +74,38 @@
                                             </div>
                                         </div>
 
+                                        <div class="tab-pane fade in active" id="expire">
+                                            <div class="tabs-wrp brd-rd5">
+                                                <h4 itemprop="headline">Proyek Lama Saya</h4>
+                                                @foreach($old_projects as $old)
+                                                    <div class="review-list" style="margin-bottom: 40px">
+                                                        <div class="review-box brd-rd5">
+                                                            <h4 itemprop="headline">
+                                                                <a href="{{ route('profile.project.detail', $old->uuid) }}" title="" itemprop="url">{{ $old->title }}</a>
+                                                            </h4>
+                                                            <div>
+                                                                <span class="food-types">Harga:</span>
+                                                                <span>Rp {{ $old->published_budget }}</span>
+                                                            </div>
+                                                            <div class="text-left">
+                                                                <p style="width: 100%; margin-bottom: 0">Keahlian : 
+                                                                    <span>Php, Jquery</span>
+                                                                </p>
+                                                                @if($old->is_approve == 0 && $old->is_reject == 0)
+                                                                    <p style="width: 100%"> Status : Sedang Direview Admin</p>
+                                                                @elseif($old->is_reject == 1 && $old->is_approve == 0)
+                                                                    <p style="width: 100%"> Status : Di Tolak Admin</p>
+                                                                @elseif($old->is_reject == 0 && $old->is_approve == 1)
+                                                                    <p style="width: 100%"> Status : Di Setujui Admin</p>
+                                                                @endif
+                                                            </div>
+                                                            {!! $old->description !!}
+                                                        </div>
+                                                    </div><!-- Review List -->
+                                                @endforeach
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
