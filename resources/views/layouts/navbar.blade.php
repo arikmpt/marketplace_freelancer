@@ -11,7 +11,7 @@
             <nav>
                 <div class="menu-sec">
                     <ul>
-                        <li><a href="contact.html" title="Beranda" itemprop="url">Beranda</a></li>
+                        <li><a href="{{ route('homepage') }}" title="Beranda" itemprop="url">Beranda</a></li>
                         <li><a href="{{ route('project.list') }}" title="Pekerjaan" itemprop="url">Pekerjaan</a></li>
                         @auth
                             <li class="menu-item-has-children"><a href="#" title="Pekerjaan" itemprop="url">Akun Saya</a>
