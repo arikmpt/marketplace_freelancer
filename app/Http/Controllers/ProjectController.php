@@ -130,6 +130,17 @@ class ProjectController extends Controller
                 : redirect()->back()->with('danger','Terjadi Kesalahan')->withInput();
     }
 
+    public function delete(Request $request, Project $project, ProjectSkill $projectskill)
+    {
+        $data = $project->where('id', $request->id)->firstOrFail();
+        $projectskill->where('project_id', $request->id)->delete();
+
+        $destroy = $data->delete();
+
+        return $destroy ? redirect()->route('profile.project.list')->with('success','Proyek Berhasil Di hapus')
+                : redirect()->back()->with('danger','Terjadi Kesalahan');
+    }
+
     private function upload($data, $location)
     {
         $fileName = str_random(20).'.'.$data->getClientOriginalExtension();

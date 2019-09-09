@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('css')
+    <link rel="stylesheet" href="{{ asset('assets/css/sweetalert.css') }}">
+@endsection
 @section('breadcrumb')
 <div class="bread-crumbs-wrapper">
     <div class="container">
@@ -53,8 +56,11 @@
                                                                 @if(!$project->is_approve)
                                                                     <div class="text-right pull-right">
                                                                         <a href="{{ route('profile.project.edit', $project->uuid) }}" class="btn btn-transparent"><i class="fa fa-pencil"></i></a>
-                                                                        <button type="button" class="btn btn-red"><i class="fa fa-trash"></i></button>
+                                                                        <button type="button" class="btn btn-red btn-delete"><i class="fa fa-trash"></i></button>
                                                                     </div>
+                                                                    {!! Form::open(['id' => 'formDelete','route' => 'profile.project.delete']) !!}
+                                                                        {!! Form::hidden('id', $project->id) !!}
+                                                                    {!! Form::close() !!}
                                                                 @endif
                                                             </h4>
                                                             <div>
@@ -126,9 +132,24 @@
 </section>
 @endsection
 @push('scripts')
+    <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-
+            $(document).on('click','.btn-delete', function() {
+                Swal.fire({
+                title: 'Apakah kamu yakin untuk menghapus proyek ini ?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batalkan',
+                confirmButtonText: 'Iya!'
+                }).then((result) => {
+                if (result.value) {
+                    $("#formDelete").submit();
+                }
+                })
+            })
         })
     </script>
 @endpush

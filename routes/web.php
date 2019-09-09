@@ -46,6 +46,7 @@ Route::group(['prefix' => 'profile','as' => 'profile.'], function () {
         Route::get('/new','ProjectController@new')->name('new');
         Route::post('/save','ProjectController@save')->name('save');
         Route::post('/update','ProjectController@update')->name('update');
+        Route::post('/delete','ProjectController@delete')->name('delete');
     
     });
 
