@@ -46,7 +46,7 @@
                                                    <a href="{{route('profile.project.new')}}" class="btn btn-red">Tambah Proyek</a>
                                                 </div>
                                                 @foreach($projects as $project)
-                                                    <div class="review-list">
+                                                    <div class="review-list" style="margin-bottom: 40px">
                                                         <div class="review-box brd-rd5">
                                                             <h4 itemprop="headline"><a href="#" title="" itemprop="url">{{ $project->title }}</a></h4>
                                                             <div>
