@@ -16,16 +16,18 @@
                         @auth
                             <li class="menu-item-has-children"><a href="#" title="Pekerjaan" itemprop="url">Akun Saya</a>
                                 <ul class="sub-dropdown">
-                                    <li><a href="index-2.html" title="Pekerjaan Ku" itemprop="url">Pekerjaan Saya</a></li>
+                                    <li><a href="{{ route('profile.project.list') }}" title="Pekerjaan Ku" itemprop="url">Pekerjaan Saya</a></li>
                                     <li><a href="index2.html" title="Penawaran Ku" itemprop="url">Penawaran Saya</a></li>
-                                    <li><a href="index2.html" title="Pengaturan" itemprop="url">Pengaturan</a></li>
+                                    <li><a href="{{ route('profile.me') }}" title="Pengaturan" itemprop="url">Pengaturan</a></li>
                                 </ul>
                             </li>
                         @endauth
-                        <li>
-                            <a class="transparent-bg brd-rd4 mg-r-15" href="{{ route('auth.login.index') }}" title="Masuk" itemprop="url">Masuk</a>
-                            <a class="red-bg brd-rd4" href="{{ route('auth.register.index') }}" title="Daftar" itemprop="url">Daftar</a>
-                        </li>
+                        @guest
+                            <li>
+                                <a class="transparent-bg brd-rd4 mg-r-15" href="{{ route('auth.login.index') }}" title="Masuk" itemprop="url">Masuk</a>
+                                <a class="red-bg brd-rd4" href="{{ route('auth.register.index') }}" title="Daftar" itemprop="url">Daftar</a>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </nav><!-- Navigation -->
