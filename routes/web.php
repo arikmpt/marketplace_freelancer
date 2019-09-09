@@ -42,8 +42,10 @@ Route::group(['prefix' => 'profile','as' => 'profile.'], function () {
 
         Route::get('/','ProjectController@ownList')->name('list');
         Route::get('/{uuid}','ProjectController@detail')->name('detail');
+        Route::get('/edit/{uuid}','ProjectController@edit')->name('edit');
         Route::get('/new','ProjectController@new')->name('new');
         Route::post('/save','ProjectController@save')->name('save');
+        Route::post('/update','ProjectController@update')->name('update');
     
     });
 

@@ -31,7 +31,6 @@ class Crud {
     {
 
         $find = $model->where($col, $val)->firstOrFail();
-
         foreach($arr as $index => $fill) {
                 $find[$index] = $arr[$index];
         }

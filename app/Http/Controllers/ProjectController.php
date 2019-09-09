@@ -45,6 +45,16 @@ class ProjectController extends Controller
                 ]);
     }
 
+    public function edit($uuid, Project $project)
+    {
+        return view('pages.projects.user.form.edit')
+            ->with([
+                'categories' => Category::pluck('name','id'),
+                'skills' =>  Skill::pluck('name','name'),
+                'project' => $project->where('uuid', $uuid)->firstOrFail()
+            ]);
+    }
+
     public function detail($uuid, Project $project)
     {
         return view('pages.projects.user.detail')
@@ -76,6 +86,42 @@ class ProjectController extends Controller
         foreach($request->skills as $skill)
         {
             $form['project_id'] = $store->id;
+            $form['name'] = $skill;
+            $save = Crud::save($projectskill, $form);
+        }
+
+        return $save ? redirect()->route('profile.project.list')->with('success','Proyek Berhasil Di ajukan, Silakan Tunggu Verifikasi Dari Admin')
+                : redirect()->back()->with('danger','Terjadi Kesalahan')->withInput();
+    }
+
+    public function update(Request $request, Project $project, ProjectSkill $projectskill)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'category_id' => 'required',
+            'published_budget' => 'required',
+            'description' => 'required'
+        ]);
+
+        if($validator->fails())
+            return redirect()->back()->withErrors($validator)->withInput();
+        
+        $data = $request->except('_token','id','skills');
+        $data['user_id'] = Auth::user()->id;
+
+        if($request->file('attachment'))
+        {
+            $data['attachment'] = $this->upload($request->file('attachment'), 'projects/');
+        }
+
+        // dd($data);
+        $store = Crud::update($project, $data, 'id', $request->id);
+
+        $delete = $projectskill->where('project_id', $request->id)->delete(); 
+
+        foreach($request->skills as $skill)
+        {
+            $form['project_id'] = $request->id;
             $form['name'] = $skill;
             $save = Crud::save($projectskill, $form);
         }

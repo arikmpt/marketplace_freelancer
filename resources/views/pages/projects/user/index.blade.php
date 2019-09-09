@@ -48,8 +48,14 @@
                                                 @foreach($projects as $project)
                                                     <div class="review-list" style="margin-bottom: 40px">
                                                         <div class="review-box brd-rd5">
-                                                            <h4 itemprop="headline">
+                                                            <h4 itemprop="headline" style="width: 100%;">
                                                                 <a href="{{ route('profile.project.detail', $project->uuid) }}" title="" itemprop="url">{{ $project->title }}</a>
+                                                                @if(!$project->is_approve)
+                                                                    <div class="text-right pull-right">
+                                                                        <a href="{{ route('profile.project.edit', $project->uuid) }}" class="btn btn-transparent"><i class="fa fa-pencil"></i></a>
+                                                                        <button type="button" class="btn btn-red"><i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                @endif
                                                             </h4>
                                                             <div>
                                                                 <span class="food-types">Harga:</span>
@@ -57,7 +63,9 @@
                                                             </div>
                                                             <div class="text-left">
                                                                 <p style="width: 100%; margin-bottom: 0">Keahlian : 
-                                                                    <span>Php, Jquery</span>
+                                                                    @foreach($project->skills as $skill)
+                                                                        {{ $skill->name.','}}
+                                                                    @endforeach
                                                                 </p>
                                                                 @if($project->is_approve == 0 && $project->is_reject == 0)
                                                                     <p style="width: 100%"> Status : Sedang Direview Admin</p>

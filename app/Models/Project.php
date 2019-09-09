@@ -33,6 +33,17 @@ class Project extends Model
         return $this->hasMany(ProjectSkill::class, 'project_id');
     }
 
+    public function skillsToString()
+    {
+        $arr = [];
+        foreach($this->skills as $skill)
+        {
+            array_push($arr, $skill->name);
+        }
+
+        return $arr;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
