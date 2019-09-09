@@ -44,6 +44,12 @@ class ProjectController extends Controller
                 ]);
     }
 
+    public function detail($uuid, Project $project)
+    {
+        return view('pages.projects.user.detail')
+            ->with(['project' => $project->where('uuid', $uuid)->firstOrFail()]);
+    }
+
     public function save(Request $request, Project $project, ProjectSkill $projectskill)
     {
         $validator = Validator::make($request->all(), [

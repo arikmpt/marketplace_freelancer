@@ -7109,7 +7109,14 @@ a.thanks-close:focus {color: #333;}
 .about-feat.text-center > img{width: 100%;}
 
 
+.project-detail-attribute p {
+  width: 100%;
+  margin-bottom: 0;
+}
 
+.project-detail-attribute p.project-detail-price {
+  color : red;
+}
 
 
 

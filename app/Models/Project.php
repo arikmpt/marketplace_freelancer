@@ -30,7 +30,7 @@ class Project extends Model
 
     public function skills()
     {
-        return $this->hasMany(Skill::class, 'project_id');
+        return $this->hasMany(ProjectSkill::class, 'project_id');
     }
 
     public function user()
