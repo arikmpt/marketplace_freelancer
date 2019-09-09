@@ -20,7 +20,7 @@ class ProjectController extends Controller
     {
         return view('pages.projects.guest.list')
         ->with([
-            'projects' => Project::where('is_approve', 1)->where('created_at', '>', Carbon::now()->subDays(15))->paginate(1)
+            'projects' => Project::where('is_approve', 1)->where('created_at', '>', Carbon::now()->subDays(15))->paginate(15)
         ]);
     }
 

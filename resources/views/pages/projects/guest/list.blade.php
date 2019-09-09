@@ -70,8 +70,10 @@
                                                     </div>
                                                 </div>
                                             @endforeach
-
-                                            {{ $projects->links() }}
+                                            
+                                            <div class="pagination-wrapper text-center">
+                                                {{ $projects->links() }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
