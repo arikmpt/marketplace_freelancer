@@ -25,16 +25,9 @@
                                             <h4 class="widget-title2 sudo-bg-red" itemprop="headline">Kategori</h4>
                                             <div class="widget-data">
                                                 <ul>
-                                                    <li><a href="#" title="" itemprop="url">Fast Food</a> <span>30</span></li>
-                                                    <li><a href="#" title="" itemprop="url">North Indian</a> <span>28</span></li>
-                                                    <li><a href="#" title="" itemprop="url">Chinese</a> <span>25</span></li>
-                                                    <li><a href="#" title="" itemprop="url">Bakery</a> <span>11</span></li>
-                                                    <li><a href="#" title="" itemprop="url">Mughlai</a> <span>7</span></li>
-                                                    <li><a href="#" title="" itemprop="url">Pizza</a> <span>6</span></li>
-                                                    <li><a href="#" title="" itemprop="url">Ice Cream</a> <span>6</span></li>
-                                                    <li><a href="#" title="" itemprop="url">Rolls</a> <span>6</span></li>
-                                                    <li><a href="#" title="" itemprop="url">Cafe</a> <span>5</span></li>
-                                                    <li><a href="#" title="" itemprop="url">Italian</a> <span>5</span></li>
+                                                    @foreach($categories as $category)
+                                                        <li><a href="{{ route('project.list.category', $category->slug) }}" title="" itemprop="url">{{ $category->name }}</a> <span>{{ $category->projects->count() }}</span></li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
