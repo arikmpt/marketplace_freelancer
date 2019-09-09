@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/select2-bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    @yield('css')
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 </head>
 <body itemscope>
@@ -45,30 +46,33 @@
         @include('layouts.navbar')
 
         @yield('breadcrumb')
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        @if (session('danger'))
-            <div class="alert alert-danger">
-                {{ session('danger') }}
-            </div>
-        @endif
-        @if (session('danger-with-link'))
-            <div class="alert alert-danger">
-                {!! session('danger-with-link') !!}
-            </div>
-        @endif
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        <div class="container">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if (session('danger'))
+                <div class="alert alert-danger">
+                    {{ session('danger') }}
+                </div>
+            @endif
+            @if (session('danger-with-link'))
+                <div class="alert alert-danger">
+                    {!! session('danger-with-link') !!}
+                </div>
+            @endif
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
         @yield('content')
         
 

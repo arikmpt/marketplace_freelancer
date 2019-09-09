@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\GenerateUuid;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -24,10 +25,20 @@ class User extends Authenticatable
         return $this->hasMany(UserSkill::class, 'user_id');
     }
 
+    public function projects()
+    {
+        return $this->hasMany(Project::class, 'user_id');
+    }
+
     public function dataTableSource()
     {
         return datatables($this->query())
             ->addIndexColumn()
             ->toJson();
+    }
+
+    public function getActiveProjects()
+    {
+        return $this->projects->where('created_at', '>', Carbon::now()->subDays(15));
     }
 }

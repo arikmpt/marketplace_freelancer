@@ -41,20 +41,27 @@
                                     <div class="tab-content">
                                         <div class="tab-pane fade in active" id="active">
                                             <div class="tabs-wrp brd-rd5">
-                                                <h4 itemprop="headline">MY REVIEWS</h4>
+                                                <h4 itemprop="headline">Proyek Saya</h4>
                                                 <div class="select-wrap-inner text-right">
-                                                   <button class="btn btn-red">Tambah Proyek</button>
+                                                   <a href="{{route('profile.project.new')}}" class="btn btn-red">Tambah Proyek</a>
                                                 </div>
-                                                <div class="review-list">
-                                                    <div class="review-box brd-rd5">
-                                                        <h4 itemprop="headline"><a href="#" title="" itemprop="url">RESTAURANT DEMO</a></h4>
-                                                        <div>
-                                                            <span class="food-types">Harga:</span>
-                                                            <span>Rp 1.200.000</span>
+                                                @foreach($projects as $project)
+                                                    <div class="review-list">
+                                                        <div class="review-box brd-rd5">
+                                                            <h4 itemprop="headline"><a href="#" title="" itemprop="url">{{ $project->title }}</a></h4>
+                                                            <div>
+                                                                <span class="food-types">Harga:</span>
+                                                                <span>Rp {{ $project->published_budget }}</span>
+                                                            </div>
+                                                            <div class="text-left">
+                                                                <p style="width: 100%">Keahlian : 
+                                                                    <span>Php, Jquery</span>
+                                                                </p>
+                                                            </div>
+                                                            {!! $project->description !!}
                                                         </div>
-                                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                                    </div>
-                                                </div><!-- Review List -->
+                                                    </div><!-- Review List -->
+                                                @endforeach
                                             </div>
                                         </div>
 
