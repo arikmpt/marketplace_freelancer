@@ -38,7 +38,27 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-sm-12 col-lg-8">
-                                    <h4>Proyek Ku</h4>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade in active" id="active">
+                                            <div class="tabs-wrp brd-rd5">
+                                                <h4 itemprop="headline">MY REVIEWS</h4>
+                                                <div class="select-wrap-inner text-right">
+                                                   <button class="btn btn-red">Tambah Proyek</button>
+                                                </div>
+                                                <div class="review-list">
+                                                    <div class="review-box brd-rd5">
+                                                        <h4 itemprop="headline"><a href="#" title="" itemprop="url">RESTAURANT DEMO</a></h4>
+                                                        <div>
+                                                            <span class="food-types">Harga:</span>
+                                                            <span>Rp 1.200.000</span>
+                                                        </div>
+                                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                                                    </div>
+                                                </div><!-- Review List -->
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
