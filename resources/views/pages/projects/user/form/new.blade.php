@@ -23,7 +23,7 @@
                 <div class="col-md-12 col-sm-12 col-lg-12">
                     <div class="sec-box">
                         <h4 style="margin-bottom: 35px;">Proyek Baru</h4>
-                        {!! Form::open(['route' => 'profile.project.save']) !!}
+                        {!! Form::open(['route' => 'profile.project.save','enctype' => 'multipart/form-data']) !!}
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">

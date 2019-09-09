@@ -12,6 +12,7 @@ use App\Helpers\Crud;
 use Validator;
 use Auth;
 use Carbon\Carbon;
+use Storage;
 
 class ProjectController extends Controller
 {
@@ -58,16 +59,30 @@ class ProjectController extends Controller
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
 
+        if($request->file('attachment'))
+        {
+            $data['attachment'] = $this->upload($request->file('attachment'), 'projects/');
+        }
+
         $store = Crud::save($project, $data);
 
         foreach($request->skills as $skill)
         {
-            $data['project_id'] = $store->id;
-            $data['name'] = $skill;
-            $store = Crud::save($projectskill, $data);
+            $form['project_id'] = $store->id;
+            $form['name'] = $skill;
+            $save = Crud::save($projectskill, $form);
         }
 
-        return $store ? redirect()->route('profile.project.list')->with('success','Proyek Berhasil Di ajukan, Silakan Tunggu Verifikasi Dari Admin')
+        return $save ? redirect()->route('profile.project.list')->with('success','Proyek Berhasil Di ajukan, Silakan Tunggu Verifikasi Dari Admin')
                 : redirect()->back()->with('danger','Terjadi Kesalahan')->withInput();
+    }
+
+    private function upload($data, $location)
+    {
+        $fileName = str_random(20).'.'.$data->getClientOriginalExtension();
+        $path = 'uploads/'.$location.$fileName;
+        $process = Storage::disk('public')->put($path, file_get_contents($data),'public');
+
+        return $path;
     }
 }
