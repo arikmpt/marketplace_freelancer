@@ -23,6 +23,7 @@ class CreateTransactionsTable extends Migration
             $table->float('fee_percentage');
             $table->unsignedBigInteger('fee_price');
             $table->boolean('is_paid')->default(0);
+            $table->boolean('is_upload')->default(0);
             $table->boolean('is_confirmation')->default(0);
             $table->boolean('is_reject')->default(0);
             $table->timestamps();
