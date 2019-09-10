@@ -39,6 +39,8 @@
                                         @include('pages.profile.own.tabs.dashboard')
                                         
                                         @include('pages.profile.own.tabs.update_profile')
+
+                                        @include('pages.profile.own.tabs.project')
                                         
                                     </div>
                                 </div>

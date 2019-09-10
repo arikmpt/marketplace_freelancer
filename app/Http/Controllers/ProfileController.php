@@ -8,6 +8,7 @@ use App\Models\Regency;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\User;
+use App\Models\Project;
 use App\Helpers\Crud;
 use Validator;
 use Auth;
@@ -27,6 +28,8 @@ class ProfileController extends Controller
             'cities' => $province ? $province->regencies->pluck('name','name') : [],
             'districts' => $city ? $city->districts->pluck('name','name') : [],
             'villages' => $district ? $district->villages->pluck('name','name') : [],
+            'projects' => Project::where('user_id', Auth::user()->id)
+                ->orWhere('winner_id', Auth::user()->id)->get()
             ]);
     }
 

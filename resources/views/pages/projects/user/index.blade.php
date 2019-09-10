@@ -125,26 +125,50 @@
                                                 @foreach($old_projects as $old)
                                                     <div class="review-list" style="margin-bottom: 40px">
                                                         <div class="review-box brd-rd5">
-                                                            <h4 itemprop="headline">
-                                                                <a href="{{ route('profile.project.detail', $old->uuid) }}" title="" itemprop="url">{{ $old->title }}</a>
+                                                            <h4 itemprop="headline" style="width: 100%; margin-bottom: 25px; margin-top: 45px;">
+                                                                <a href="{{ route('profile.project.detail', $project->uuid) }}" title="" itemprop="url">{{ $project->title }}</a>
                                                             </h4>
-                                                            <div>
-                                                                <span class="food-types">Harga:</span>
-                                                                <span>Rp {{ $old->published_budget }}</span>
+                                                            <div class="row" style="margin-bottom: 25px;">
+                                                                <div class="col-md-5">
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Harga :</span>
+                                                                        <span>Rp {{ $project->published_budget }}</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Total Penawaran :</span>
+                                                                        <span>{{ $project->bids->count() }}</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Lama Pengerjaan :</span>
+                                                                        <span>{{ $project->finish_day }} Hari</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Status :</span>
+                                                                        <span>{{ $project->status }}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-7">
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Tawaran Yang Disetujui :</span>
+                                                                        <span>{{ $project->winner ? $project->winner->username : '-' }}</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Harga Yang Disepakati:</span>
+                                                                        <span>Rp {{ $project->accept_price }}</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Kadaluarsa Pada :</span>
+                                                                        <span>{{ $project->created_at->subDays(-15)->format('d/M/Y') }}</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Keahlian Yang Dibutuhkan : </span>
+                                                                        @foreach($project->skills as $skill)
+                                                                            <span>{{ $skill->name.','}}</span>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="text-left">
-                                                                <p style="width: 100%; margin-bottom: 0">Keahlian : 
-                                                                    <span>Php, Jquery</span>
-                                                                </p>
-                                                                @if($old->is_approve == 0 && $old->is_reject == 0)
-                                                                    <p style="width: 100%"> Status : Sedang Direview Admin</p>
-                                                                @elseif($old->is_reject == 1 && $old->is_approve == 0)
-                                                                    <p style="width: 100%"> Status : Di Tolak Admin</p>
-                                                                @elseif($old->is_reject == 0 && $old->is_approve == 1)
-                                                                    <p style="width: 100%"> Status : Di Setujui Admin</p>
-                                                                @endif
-                                                            </div>
-                                                            {!! $old->description !!}
+                                                            {!! $project->description !!}
                                                         </div>
                                                     </div><!-- Review List -->
                                                 @endforeach
