@@ -46,6 +46,33 @@
                         @endif
                     </div><!-- Section Box -->
                 </div>
+                <div class="col-md-12">
+                    <div class="sec-box">
+                        <h4>Total Penawaran</h4>
+                        <ul class="dishes-list">
+                            @foreach($project->bids as $bid)
+                                <li class="wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="featured-restaurant-box">
+                                        <div class="featured-restaurant-thumb text-center">
+                                            <a href="#" title="" itemprop="url">
+                                                <img src="{{ $bid->user->photo ? '/storage/'.$bid->user->photo : 'https://via.placeholder.com/150' }}" alt="dish-img1-1.jpg" itemprop="image">
+                                                {{ $bid->user->username  }}
+                                            </a>
+                                        </div>
+                                        <div class="featured-restaurant-info">
+                                            <h4 itemprop="headline"><a href="#" title="" itemprop="url"></a></h4>
+                                            <span class="price">Rp {{ $bid->price }}</span>
+                                            <p itemprop="description">{{ $bid->description }}</p>>
+                                        </div>
+                                        <div class="ord-btn">
+                                            <a class="brd-rd2" href="#" title="Order Now" itemprop="url">Pilih Penawaran</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
