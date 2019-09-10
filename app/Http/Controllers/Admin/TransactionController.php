@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
+use App\Models\Project;
 use DataTables;
 use Yajra\DataTables\Html\Builder;
 
@@ -40,6 +41,15 @@ class TransactionController extends Controller
             ->addColumn('fee_price', function($model) {
                 return 'Rp '.$model->fee_price;
             })
+            ->addColumn('status', function($model) {
+                return $model->project->status;
+            })
+            ->addColumn('action', function($model) {
+                if(!$model->is_confirmation) {
+
+                    return '<button type="button" class="btn btn-primary confirm">Konfirmasi</button>';
+                }
+            })
             ->toJson();
         }
         $html = $this->dataTableHtml($builder);
@@ -61,6 +71,26 @@ class TransactionController extends Controller
             ['data' => 'price', 'name' => 'price', 'title' => 'Price'],
             ['data' => 'fee', 'name' => 'fee', 'title' => 'Fee'],
             ['data' => 'fee_price', 'name' => 'fee_price', 'title' => 'Fee Price'],
+            ['data' => 'status', 'name' => 'status', 'title' => 'Status'],
+            [
+                'data' => 'action','title' => 'Action',
+                'orderable' => false,'searchable' => false,
+                'width' => '50px'
+            ],
         ]);
+    }
+
+    public function confirm(Request $request)
+    {
+        $transaction = $this->table->where('id', $request->id)->firstOrFail();
+        $transaction->is_confirmation = 1;
+        $transaction->save();
+
+        $project = Project::where('id', $transaction->project_id)->firstOrFail();
+        $project->status = 'Proyek Sudah Bisa Di Kerjaan';
+        $project->save();
+
+        return $transaction ? redirect()->back()->with('success', 'Konfirmasi Berhasil')
+            : redirect()->back()->with('danger', 'Terjadi Kesalahan');
     }
 }

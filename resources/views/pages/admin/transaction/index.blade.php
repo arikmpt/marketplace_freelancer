@@ -14,7 +14,23 @@
         </div>
     </div>
 
+    @include('pages.admin.transaction.modal')
 @endsection
 @push('scripts')
     {!! $html->scripts() !!}
+    <script>
+        $(document).ready(function() {
+            $('table#dataTableBuilder tbody').on( 'click', 'td button', function (e) {
+                var mode = $(this).attr("data-mode");
+                var parent = $(this).parent().get( 0 );
+                var parent1 = $(parent).parent().get( 0 );
+                var row = $('#dataTableBuilder').DataTable().row(parent1);
+                var data = row.data();
+
+                $("#id").val(data.id)
+                $("#receiptImg").attr("src","/storage/"+data.upload_receipt)
+                $("#modal").modal('show');
+            })
+        })
+    </script>
 @endpush

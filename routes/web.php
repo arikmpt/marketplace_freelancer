@@ -98,6 +98,7 @@ Route::group(['prefix' => 'backyard', 'as' => 'admin.','namespace' => 'Admin'], 
 
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
         Route::get('/','TransactionController@index')->name('index');
+        Route::post('/confirm','TransactionController@confirm')->name('confirm');
     });
     
     Route::group(['prefix' => 'project', 'as' => 'project.'], function () {
