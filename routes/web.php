@@ -53,6 +53,10 @@ Route::group(['prefix' => 'profile','as' => 'profile.'], function () {
         Route::post('/save','ProjectController@save')->name('save');
         Route::post('/update','ProjectController@update')->name('update');
         Route::post('/delete','ProjectController@delete')->name('delete');
+
+        Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
+            Route::post('/','TransactionController@getTransaction')->name('get.transaction');
+        });
     
     });
 

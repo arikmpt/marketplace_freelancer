@@ -62,7 +62,10 @@
                                                                 {!! Form::close() !!}
                                                             @elseif($project->status == 'menunggu pembayaran' && $project->user_id == Auth::user()->id)
                                                                 <div class="text-right">
-                                                                    <button type="button" class="btn btn-red ">Lakukan Pembayaran</button>
+                                                                    <button type="button" class="btn btn-red do-payment" data-id="{{ $project->id }}">Lakukan Pembayaran</button>
+                                                                </div>
+                                                            @elseif($project->status == 'menunggu konfirmasi pembayaran' && $project->user_id == Auth::user()->id)
+                                                                <div class="text-right">
                                                                     <button type="button" class="btn btn-red ">Konfirmasi Pembayaran</button>
                                                                 </div>
                                                             @endif
@@ -157,6 +160,8 @@
             </div>
         </div>
     </div>
+
+    @include('pages.projects.user.modal.do_payment')
 </section>
 @endsection
 @push('scripts')
@@ -176,6 +181,27 @@
                 if (result.value) {
                     $("#formDelete").submit();
                 }
+                })
+            })
+
+            $('.do-payment').on('click', function(e) {
+                e.preventDefault()
+                $.ajax({
+                    url : "{{ route('profile.project.transaction.get.transaction') }}",
+                    headers: {
+                        'X-CSRF-Token': "{{ csrf_token() }}"
+                    },
+                    type: "POST",
+                    data : {
+                        id : $(".do-payment").data("id")
+                    },
+                    success : function(result) {
+                        $("#doPayment").modal('show')
+                        $(".price-get-transaction").text(result.data.price + result.data.unique_code)
+                    },
+                    error : function(err) {
+                        console.log(err)
+                    }
                 })
             })
         })
