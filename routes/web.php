@@ -57,6 +57,7 @@ Route::group(['prefix' => 'profile','as' => 'profile.'], function () {
         Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
             Route::post('/','TransactionController@getTransaction')->name('get.transaction');
             Route::post('/paid','TransactionController@paid')->name('paid');
+            Route::post('/confirm','TransactionController@confirm')->name('confirm');
         });
     
     });

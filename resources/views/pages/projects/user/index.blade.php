@@ -66,7 +66,7 @@
                                                                 </div>
                                                             @elseif($project->status == 'menunggu konfirmasi pembayaran' && $project->user_id == Auth::user()->id)
                                                                 <div class="text-right">
-                                                                    <button type="button" class="btn btn-red ">Konfirmasi Pembayaran</button>
+                                                                    <button type="button" class="btn btn-red confirm-payment " data-id="{{ $project->id }}" data-toggle="modal" data-target="#confirmPayment">Konfirmasi Pembayaran</button>
                                                                 </div>
                                                             @endif
                                                             <h4 itemprop="headline" style="width: 100%; margin-bottom: 25px; margin-top: 45px;">
@@ -162,6 +162,7 @@
     </div>
 
     @include('pages.projects.user.modal.do_payment')
+    @include('pages.projects.user.modal.confirm_payment')
 </section>
 @endsection
 @push('scripts')
@@ -204,6 +205,10 @@
                         console.log(err)
                     }
                 })
+            })
+
+            $('.confirm-payment').on('click', function(e) {
+                $("#id_confirm_payment").val($(".confirm-payment").data('id'))
             })
         })
     </script>
