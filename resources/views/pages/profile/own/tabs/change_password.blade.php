@@ -7,6 +7,7 @@
             <div class="featured-restaurant-box style3 brd-rd5">
                 <div class="row">
                     <div class="col-md-12">
+                        {!! Form::open(['route' => 'profile.change.password']) !!}
                         <div class="form-group">
                             <label for="">Password Lama</label>
                             {!! Form::password('old_password',['class' => 'form-control']) !!}
@@ -20,6 +21,7 @@
                             {!! Form::password('confirm_password',['class' => 'form-control']) !!}
                         </div>
                         <button type="submit" class="btn btn-red">Ganti Password</button>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

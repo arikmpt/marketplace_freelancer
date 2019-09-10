@@ -14,6 +14,7 @@ use App\Helpers\Crud;
 use Validator;
 use Auth;
 use Storage;
+use Hash;
 
 class ProfileController extends Controller
 {
@@ -68,6 +69,30 @@ class ProfileController extends Controller
 
         return $store ? redirect()->route('profile.me')->with('success','Perbaruhi Profil Berhasil')
             : redirect()->back()->with('danger','Terjadi Kesalahan')->withInput();
+    }
+
+    public function changePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'confirm_password' => 'required|same:new_password',
+        ]);
+
+        if($validator->fails())
+            return redirect()->back()->withErrors($validator);
+
+        if(Hash::check($request->old_password, Auth::user()->password))
+        {
+            $user = User::where('id', Auth::user()->id)->firstOrFail();
+            $user->password = Hash::make($request->confirm_password);
+            $user->save();
+
+            return $user ? redirect()->back()->with('success', 'Ganti Password Berhasil')
+                : redirect()->back()->with('danger', 'Terjadi Kesalahan');
+        } else {
+            return redirect()->back()->with('danger','Password Lama Salah');
+        }
     }
 
     public function getCitiesByState(Request $request)
