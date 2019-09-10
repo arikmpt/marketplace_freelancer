@@ -10,7 +10,10 @@
                 <p>Silakan Anda Melakukan Pembayaran Dengan Cara Transfer Ke Nomor Rekening <b>BCA 123456</b> Sejumlah</p>
                 <h4>Rp <span class="price-get-transaction"></span></h4>
                 <p>Jika Anda Sudah Melakukan Pembayaran Silakan Klik Tombol Dibawah Ini</p>
-                <button class="btn btn-red">Bayar</button>
+                {!! Form::open(['route' => 'profile.project.transaction.paid']) !!}
+                    {!! Form::hidden('id', null, ['id' => 'id']) !!}
+                    <button class="btn btn-red" type="submit">Bayar</button>
+                {!! Form::close() !!}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

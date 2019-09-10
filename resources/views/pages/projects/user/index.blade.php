@@ -197,6 +197,7 @@
                     },
                     success : function(result) {
                         $("#doPayment").modal('show')
+                        $("#id").val(result.data.id)
                         $(".price-get-transaction").text(result.data.price + result.data.unique_code)
                     },
                     error : function(err) {
