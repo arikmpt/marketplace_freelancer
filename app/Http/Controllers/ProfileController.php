@@ -33,6 +33,13 @@ class ProfileController extends Controller
             ]);
     }
 
+    public function guest($uuid)
+    {
+        $profile = User::where('uuid', $uuid)->firstOrFail();
+        return view('pages.profile.guest.index')
+            ->with(['profile' => $profile]);
+    }
+
     public function update(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [

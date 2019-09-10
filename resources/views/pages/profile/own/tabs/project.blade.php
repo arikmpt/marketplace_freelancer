@@ -50,7 +50,7 @@
                         <div class="col-md-7">
                             <div class="w100 pull-left">
                                 <span class="food-types">Tawaran Yang Disetujui :</span>
-                                <span>{{ $project->winner ? $project->winner->username : '-' }}</span>
+                                <a href="{{ route('profile.guest', $project->winner ? $project->winner->uuid : null ) }}">{{ $project->winner ? $project->winner->username : '-' }}</a>
                             </div>
                             <div class="w100 pull-left">
                                 <span class="food-types">Harga Yang Disepakati:</span>
