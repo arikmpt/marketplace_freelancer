@@ -53,14 +53,18 @@
                                                         <div class="review-box brd-rd5">
                                                             @if(!$project->is_approve)
                                                                 <div class="text-right pull-right">
-                                                                    <button type="button" class="btn btn-red ">Lakukan Pembayaran</button>
-                                                                    <button type="button" class="btn btn-red ">Konfirmasi Pembayaran</button>
+                                                                    
                                                                     <a href="{{ route('profile.project.edit', $project->uuid) }}" class="btn btn-red">Sunting</a>
                                                                     <button type="button" class="btn btn-red btn-delete">Hapus</button>
                                                                 </div>
                                                                 {!! Form::open(['id' => 'formDelete','route' => 'profile.project.delete']) !!}
                                                                     {!! Form::hidden('id', $project->id) !!}
                                                                 {!! Form::close() !!}
+                                                            @elseif($project->status == 'menunggu pembayaran' && $project->user_id == Auth::user()->id)
+                                                                <div class="text-right">
+                                                                    <button type="button" class="btn btn-red ">Lakukan Pembayaran</button>
+                                                                    <button type="button" class="btn btn-red ">Konfirmasi Pembayaran</button>
+                                                                </div>
                                                             @endif
                                                             <h4 itemprop="headline" style="width: 100%; margin-bottom: 25px; margin-top: 45px;">
                                                                 <a href="{{ route('profile.project.detail', $project->uuid) }}" title="" itemprop="url">{{ $project->title }}</a>

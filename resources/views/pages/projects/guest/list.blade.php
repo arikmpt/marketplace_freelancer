@@ -56,7 +56,7 @@
                                                             </p>
 
                                                             <p style="width: 100%; margin-bottom: 25px;">Pemilik : 
-                                                                {{ $project->user->name }}
+                                                                {{ $project->owner->username }}
                                                             </p>
                                                             {!! $project->description !!}
                                                         </div>

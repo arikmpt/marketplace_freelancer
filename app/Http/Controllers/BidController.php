@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProjectBid;
+use App\Models\Project;
 use App\Helpers\Crud;
 use Auth;
 
@@ -26,5 +27,19 @@ class BidController extends Controller
         }
         
         return $store ? view('pages.bids.bid_placed') : redirect()->back()->with('danger', 'Terjadi Kesalahan');
+    }
+
+    public function chooseWinner(Request $request, ProjectBid $table, Project $projectTable)
+    {
+        $bid = $table->where('id', $request->id)->firstOrFail();
+        
+        $project = $projectTable->where('id', $bid->project_id)->firstOrFail();
+        $project->status = 'menunggu pembayaran';
+        $project->accept_price = $bid->price;
+        $project->winner_id = $bid->user_id;
+        $project->save();
+
+        return $project ? redirect()->route('profile.project.list')->with('success', 'Pemenang berhasil di tentukan')
+            : redirect()->back()->with('danger', 'Terjadi kesalahan');
     }
 }

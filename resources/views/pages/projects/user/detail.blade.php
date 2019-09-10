@@ -77,6 +77,7 @@
                         @endif
                     </div><!-- Section Box -->
                 </div>
+                @if($project->winner_id == null)
                 <div class="col-md-12">
                     <div class="sec-box">
                         <h4 class="title-section">Total Penawaran</h4>
@@ -96,7 +97,10 @@
                                             <p itemprop="description">{{ $bid->description }}</p>
                                         </div>
                                         <div class="ord-btn">
-                                            <a class="brd-rd2" href="#" title="Order Now" itemprop="url">Pilih Penawaran</a>
+                                            {!! Form::open(['route' => 'project.bid.choose.winner']) !!}
+                                                {!! Form::hidden('id', $bid->id) !!}
+                                                <button type="submit" class="btn btn-red">Pilih Penawaran</button>
+                                            {!! Form::close() !!}
                                         </div>
                                     </div>
                                 </li>
@@ -104,6 +108,7 @@
                         </ul>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>

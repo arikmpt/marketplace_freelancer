@@ -35,6 +35,7 @@ Route::group(['prefix' => 'projects','as' => 'project.'], function () {
 
     Route::group(['prefix' => 'bid','as' =>'bid.'], function () {
         Route::post('/save','BidController@store')->name('store');
+        Route::post('/choose','BidController@chooseWinner')->name('choose.winner');
     });
 });
 

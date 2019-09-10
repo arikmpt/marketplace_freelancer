@@ -67,7 +67,7 @@
                                                         <p><b>Harga : </b></p>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <p class="text-right">{{ $project->user->username }}</p>
+                                                        <p class="text-right">{{ $project->owner->username }}</p>
                                                         <p class="text-right">Rp {{ $project->published_budget }}</p>
                                                     </div>
                                                 </div>
