@@ -4,7 +4,8 @@
     <div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('homepage') }}" title="" itemprop="url">Beranda</a></li>
-            <li class="breadcrumb-item active">Nama Pekerjaan</li>
+            <li class="breadcrumb-item"><a href="{{ route('project.list') }}" title="" itemprop="url">Pekerjaan</a></li>
+            <li class="breadcrumb-item active">{{ $project->title }}</li>
         </ol>
     </div>
 </div>
@@ -74,6 +75,25 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec-box">
+                        <div class="sec-wrapper">
+                            <h4>Total Penawaran</h4>
+                            <div class="row">
+                                @forelse($project->bids as $bid)
+                                    <div class="col-md-2">
+                                        <div class="featured-restaurant-thumb text-center">
+                                            <a href="#" title="" itemprop="url">
+                                                <img src="{{ $bid->user->photo ? '/storage/'.$bid->user->photo : 'https://via.placeholder.com/150' }}" alt="dish-img1-2.jpg" itemprop="image">
+                                                {{ $bid->user->username }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                @empty
+
+                                @endforelse
                             </div>
                         </div>
                     </div>

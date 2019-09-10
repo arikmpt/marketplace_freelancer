@@ -17,7 +17,13 @@ class BidController extends Controller
         if($request->price < $request->project_price)
             return redirect()->back()->with('danger', 'Anda tidak bisa menawar lebih rendah dari harga proyek nya');
 
-        $store = Crud::save($table, $request->all());
+        $check = $table->where('user_id', $request->user_id)->where('project_id', $request->project_id)->first();
+        if($check) {
+            $store = $check->update(['price' => $request->price, 'description' => $request->description]);
+        } else {
+            $store = Crud::save($table, $request->all());
+
+        }
         
         return $store ? view('pages.bids.bid_placed') : redirect()->back()->with('danger', 'Terjadi Kesalahan');
     }
