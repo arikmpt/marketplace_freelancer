@@ -30,6 +30,11 @@ class User extends Authenticatable
         return $this->hasMany(Project::class, 'user_id');
     }
 
+    public function users()
+    {
+        return $this->hasMany(User::class, 'user_id');
+    }
+
     public function dataTableSource()
     {
         return datatables($this->query())

@@ -33,6 +33,11 @@ class Project extends Model
         return $this->hasMany(ProjectSkill::class, 'project_id');
     }
 
+    public function bids()
+    {
+        return $this->hasMany(ProjectBid::class, 'project_id');
+    }
+
     public function skillsToString()
     {
         $arr = [];

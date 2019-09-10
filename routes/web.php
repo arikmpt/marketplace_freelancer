@@ -15,6 +15,7 @@ Route::get('/','HomeController@index')->name('homepage');
 
 Route::group(['prefix' => 'auth','as' => 'auth.'], function () {
 
+    Route::get('/logout','Auth\LoginController@logout')->name('logout');
     Route::group(['prefix' => 'login','as' => 'login.'], function () {
         Route::get('/','Auth\LoginController@index')->name('index');
         Route::post('/','Auth\LoginController@login')->name('login');
@@ -32,6 +33,9 @@ Route::group(['prefix' => 'projects','as' => 'project.'], function () {
     Route::get('/category/{slug}/list', 'ProjectController@guestListByCategory')->name('list.category');
     Route::get('/detail/{uuid}','ProjectController@guestDetail')->name('detail');
 
+    Route::group(['prefix' => 'bid','as' =>'bid.'], function () {
+        Route::post('/save','BidController@store')->name('store');
+    });
 });
 
 Route::group(['prefix' => 'profile','as' => 'profile.'], function () {

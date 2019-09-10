@@ -21,6 +21,9 @@
                                     <li><a href="{{ route('profile.me') }}" title="Pengaturan" itemprop="url">Pengaturan</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="{{ route('auth.logout') }}" title="Keluar" itemprop="url">Keluar</a>
+                            </li>
                         @endauth
                         @guest
                             <li>

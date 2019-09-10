@@ -27,18 +27,31 @@
                                             </div>
                                             
                                             <p style="margin-bottom: 45px;">{!! $project->description !!}</p>
+                                            @if($project->attachment)
+                                                <div class="form-group">
+                                                    <label for="">Lampiran</label>
+                                                    <img src="/storage/{{ $project->attachment }}" alt="">
+                                                </div>
+                                            @endif
                                         </div>
-                                        <form action="" class="form-bid" style="margin-top: 80px;">
+                                    </div>
+
+                                    <div class="restaurant-detail-wrapper">
+                                        <h4 style="margin-top: 80px;">Ajukan Penawaran Anda</h4>
+                                        {!! Form::open(['route' => 'project.bid.store', 'style' => 'margin-top: 15px;','class' => 'form-bid']) !!}
+                                            {!! Form::hidden('user_id', Auth::user()->id) !!}
+                                            {!! Form::hidden('project_id', $project->id) !!}
+                                            {!! Form::hidden('project_user_id', $project->user_id) !!}
                                             <div class="form-group">
                                                 <label for="">Harga</label>
-                                                <input type="text" class="form-control">
+                                                {!! Form::number('price', null, ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Deskripsi</label>
-                                                <textarea class="form-control"> </textarea>
+                                                {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
                                             </div>
                                             <button type="submit" class="btn btn-red btn-block">Ajukan</button>
-                                        </form>
+                                        {!! Form::close() !!}
                                     </div>
                                 </div>
                                 <div class="col-md-5 col-sm-12 col-lg-4">
