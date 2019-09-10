@@ -20,6 +20,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('admin.project.index') }}">
+              <i class="fa fa-book"></i> <span>Project</span>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('admin.user.index') }}">
               <i class="fa fa-users"></i> <span>User</span>
             </a>
