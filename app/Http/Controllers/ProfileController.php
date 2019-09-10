@@ -9,6 +9,7 @@ use App\Models\District;
 use App\Models\Village;
 use App\Models\User;
 use App\Models\Project;
+use App\Models\ProjectBid;
 use App\Helpers\Crud;
 use Validator;
 use Auth;
@@ -21,6 +22,7 @@ class ProfileController extends Controller
         $province = Province::where('name', Auth::user()->state)->first();
         $city = Regency::where('name', Auth::user()->city)->first();
         $district = District::where('name', Auth::user()->district)->first();
+        $bids = ProjectBid::where('user_id', Auth::user()->id)->get();
 
         return view('pages.profile.own.index')
         ->with([
@@ -29,7 +31,8 @@ class ProfileController extends Controller
             'districts' => $city ? $city->districts->pluck('name','name') : [],
             'villages' => $district ? $district->villages->pluck('name','name') : [],
             'projects' => Project::where('user_id', Auth::user()->id)
-                ->orWhere('winner_id', Auth::user()->id)->get()
+                ->orWhere('winner_id', Auth::user()->id)->get(),
+            'bids' => $bids
             ]);
     }
 

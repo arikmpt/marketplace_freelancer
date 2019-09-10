@@ -35,6 +35,11 @@ class User extends Authenticatable
         return $this->hasMany(User::class, 'user_id');
     }
 
+    public function bids()
+    {
+        return $this->hasMany(ProjectBid::class, 'user_id');
+    }
+
     public function dataTableSource()
     {
         return datatables($this->query())
