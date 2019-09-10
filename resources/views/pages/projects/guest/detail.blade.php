@@ -41,6 +41,7 @@
                                         {!! Form::open(['route' => 'project.bid.store', 'style' => 'margin-top: 15px;','class' => 'form-bid']) !!}
                                             {!! Form::hidden('user_id', Auth::user()->id) !!}
                                             {!! Form::hidden('project_id', $project->id) !!}
+                                            {!! Form::hidden('project_price', $project->published_budget) !!}
                                             {!! Form::hidden('project_user_id', $project->user_id) !!}
                                             <div class="form-group">
                                                 <label for="">Harga</label>
