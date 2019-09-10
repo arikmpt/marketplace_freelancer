@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ProjectBid;
 use App\Models\Project;
+use App\Models\Transaction;
 use App\Helpers\Crud;
 use Auth;
 
@@ -39,7 +40,17 @@ class BidController extends Controller
         $project->winner_id = $bid->user_id;
         $project->save();
 
-        return $project ? redirect()->route('profile.project.list')->with('success', 'Pemenang berhasil di tentukan')
+        $transaction = new Transaction;
+        $transaction->project_id = $project->id;
+        $transaction->owner_id = $project->user_id;
+        $transaction->winner_id = $project->winner_id;
+        $transaction->price = $bid->price;
+        $transaction->unique_code = rand(10,1000);
+        $transaction->fee_percentage = 0.02;
+        $transaction->fee_price = 0.02 * $bid->price;
+        $transaction->save();
+
+        return $transaction ? redirect()->route('profile.project.list')->with('success', 'Pemenang berhasil di tentukan')
             : redirect()->back()->with('danger', 'Terjadi kesalahan');
     }
 }
