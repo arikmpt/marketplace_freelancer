@@ -34,15 +34,10 @@ class UserController extends Controller
                 'orderable' => false,'searchable' => false,
                 'width' => '24px'
             ],
-            ['data' => 'name', 'name' => 'name', 'title' => 'Name'],
-            [
-                'data' => 'action', 
-                'name' => 'action', 
-                'title' => '#',
-                'width' => '80px',
-                'orderable' => false,
-                'searchable' => false
-            ]
+            ['data' => 'username', 'name' => 'username', 'title' => 'Username'],
+            ['data' => 'email', 'name' => 'email', 'title' => 'email'],
+            ['data' => 'gender', 'name' => 'gender', 'title' => 'gender'],
+            ['data' => 'phone', 'name' => 'phone', 'title' => 'phone'],
         ]);
     }
 }
