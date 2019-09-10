@@ -39,12 +39,12 @@
                                     <span>{{ $project->bids->count() }}</span>
                                 </div>
                                 <div class="w100 pull-left">
-                                    <span class="food-types">Status :</span>
-                                    <span>{{ $project->status }}</span>
-                                </div>
-                                <div class="w100 pull-left">
                                     <span class="food-types">Lama Pengerjaan :</span>
                                     <span>{{ $project->finish_day }} Hari</span>
+                                </div>
+                                <div class="w100 pull-left">
+                                    <span class="food-types">Status :</span>
+                                    <span>{{ $project->status }}</span>
                                 </div>
                             </div>
                             <div class="col-md-7">
