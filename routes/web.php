@@ -92,6 +92,8 @@ Route::group(['prefix' => 'backyard', 'as' => 'admin.','namespace' => 'Admin'], 
     
     Route::group(['prefix' => 'project', 'as' => 'project.'], function () {
         Route::get('/','ProjectController@index')->name('index');
+        Route::post('/accept','ProjectController@accept')->name('accept');
+        Route::post('/reject','ProjectController@reject')->name('reject');
         Route::get('/{uuid}','ProjectController@detail')->name('detail');
     });
 });

@@ -62,6 +62,32 @@ class ProjectController extends Controller
 
     public function detail($uuid)
     {
-        return view('admin.project.detail');
+        $project = $this->table->where('uuid', $uuid)->firstOrFail();
+        return view('pages.admin.project.detail')
+            ->with(['project' => $project]);
+    }
+
+    public function accept(Request $request)
+    {
+        $project = $this->table->where('id', $request->id)->firstOrFail();
+        $project->is_approve = 1;
+        $project->is_reject = 0;
+        $project->status = 'Penawaran Terbuka';
+        $project->save();
+
+        return $project ? redirect()->back()->with('success', 'Project Berhasil Disetujui')
+            : redirect()->back()->with('danger', 'Terjadi kesalahan');
+    }
+
+    public function reject(Request $request)
+    {
+        $project = $this->table->where('id', $request->id)->firstOrFail();
+        $project->is_approve = 0;
+        $project->is_reject = 1;
+        $project->status = 'Di tolak admin';
+        $project->save();
+
+        return $project ? redirect()->back()->with('success', 'Project Berhasil Ditolak')
+            : redirect()->back()->with('danger', 'Terjadi kesalahan');
     }
 }
