@@ -88,7 +88,8 @@ class ProjectController extends Controller
             'title' => 'required',
             'category_id' => 'required',
             'published_budget' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'finish_day' => 'required'
         ]);
 
         if($validator->fails())
@@ -96,6 +97,7 @@ class ProjectController extends Controller
         
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
+        $data['status'] = 'menunggu persetujuan admin';
 
         if($request->file('attachment'))
         {

@@ -28,14 +28,45 @@
                 <div class="col-md-12 col-sm-12 col-lg-12">
                     <div class="sec-box">
                         <h4 style="margin-bottom: 35px;">{{ $project->title }}</h4>
-                        <div class="project-detail-attribute">
-                            <p class="project-detail-price">Harga : <span>Rp {{ $project->published_budget }}</span> </p>
-                            <p class="project-detail-status">Waktu Penyelesaian : {{ $project->finsih_day ? $project->finsih_day.'days' : 'Tidak Ada Batasan Waktu' }}  </p>
-                            <p class="project-detail-skills">Keahlian : 
-                                @foreach($project->skills as $skill)
-                                    {{ $skill->name .','}}
-                                @endforeach
-                            </p>
+                        <div class="row" style="margin-bottom: 25px;">
+                            <div class="col-md-5">
+                                <div class="w100 pull-left">
+                                    <span class="food-types">Harga :</span>
+                                    <span>Rp {{ $project->published_budget }}</span>
+                                </div>
+                                <div class="w100 pull-left">
+                                    <span class="food-types">Total Penawaran :</span>
+                                    <span>{{ $project->bids->count() }}</span>
+                                </div>
+                                <div class="w100 pull-left">
+                                    <span class="food-types">Status :</span>
+                                    <span>{{ $project->status }}</span>
+                                </div>
+                                <div class="w100 pull-left">
+                                    <span class="food-types">Lama Pengerjaan :</span>
+                                    <span>{{ $project->finish_day }} Hari</span>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="w100 pull-left">
+                                    <span class="food-types">Tawaran Yang Disetujui :</span>
+                                    <span>{{ $project->winner ? $project->winner->username : '-' }}</span>
+                                </div>
+                                <div class="w100 pull-left">
+                                    <span class="food-types">Harga Yang Disepakati:</span>
+                                    <span>Rp {{ $project->accept_price }}</span>
+                                </div>
+                                <div class="w100 pull-left">
+                                    <span class="food-types">Kadaluarsa Pada :</span>
+                                    <span>{{ $project->created_at->subDays(-15)->format('d/M/Y') }}</span>
+                                </div>
+                                <div class="w100 pull-left">
+                                    <span class="food-types">Keahlian Yang Dibutuhkan : </span>
+                                    @foreach($project->skills as $skill)
+                                        <span>{{ $skill->name.','}}</span>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                         {!! $project->description !!}
                         @if($project->attachment)

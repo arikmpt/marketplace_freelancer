@@ -20,7 +20,7 @@ class Project extends Model
 
     protected $fillable = [
         'title','description','finish_day','published_budget','attachment',
-        'is_expire','category_id','user_id'
+        'is_expire','category_id','user_id','status','winner_id','accept_price'
     ];
 
     public function getTitleAttribute($value)
@@ -59,8 +59,13 @@ class Project extends Model
         return $arr;
     }
 
-    public function user()
+    public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function winner()
+    {
+        return $this->belongsTo(User::class, 'winner_id');
     }
 }

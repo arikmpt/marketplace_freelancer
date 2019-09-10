@@ -53,14 +53,16 @@
                                                         <div class="review-box brd-rd5">
                                                             @if(!$project->is_approve)
                                                                 <div class="text-right pull-right">
-                                                                    <a href="{{ route('profile.project.edit', $project->uuid) }}" class="btn btn-transparent"><i class="fa fa-pencil"></i></a>
-                                                                    <button type="button" class="btn btn-red btn-delete"><i class="fa fa-trash"></i></button>
+                                                                    <button type="button" class="btn btn-red ">Lakukan Pembayaran</button>
+                                                                    <button type="button" class="btn btn-red ">Konfirmasi Pembayaran</button>
+                                                                    <a href="{{ route('profile.project.edit', $project->uuid) }}" class="btn btn-red">Sunting</a>
+                                                                    <button type="button" class="btn btn-red btn-delete">Hapus</button>
                                                                 </div>
                                                                 {!! Form::open(['id' => 'formDelete','route' => 'profile.project.delete']) !!}
                                                                     {!! Form::hidden('id', $project->id) !!}
                                                                 {!! Form::close() !!}
                                                             @endif
-                                                            <h4 itemprop="headline" style="width: 100%; margin-bottom: 25px;">
+                                                            <h4 itemprop="headline" style="width: 100%; margin-bottom: 25px; margin-top: 45px;">
                                                                 <a href="{{ route('profile.project.detail', $project->uuid) }}" title="" itemprop="url">{{ $project->title }}</a>
                                                             </h4>
                                                             <div class="row" style="margin-bottom: 25px;">
@@ -79,21 +81,21 @@
                                                                     </div>
                                                                     <div class="w100 pull-left">
                                                                         <span class="food-types">Lama Pengerjaan :</span>
-                                                                        <span>{{ $project->status }} Hari</span>
+                                                                        <span>{{ $project->finish_day }} Hari</span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-7">
                                                                     <div class="w100 pull-left">
                                                                         <span class="food-types">Tawaran Yang Disetujui :</span>
-                                                                        <span>{{ $project->published_budget }}</span>
+                                                                        <span>{{ $project->winner ? $project->winner->username : '-' }}</span>
                                                                     </div>
                                                                     <div class="w100 pull-left">
                                                                         <span class="food-types">Harga Yang Disepakati:</span>
-                                                                        <span>{{ $project->bids->count() }}</span>
+                                                                        <span>Rp {{ $project->accept_price }}</span>
                                                                     </div>
                                                                     <div class="w100 pull-left">
                                                                         <span class="food-types">Kadaluarsa Pada :</span>
-                                                                        <span>{{ $project->status }}</span>
+                                                                        <span>{{ $project->created_at->subDays(-15)->format('d/M/Y') }}</span>
                                                                     </div>
                                                                     <div class="w100 pull-left">
                                                                         <span class="food-types">Keahlian Yang Dibutuhkan : </span>
