@@ -40,6 +40,9 @@
                                         
                                         @include('pages.profile.own.tabs.update_profile')
 
+                                        @include('pages.profile.own.tabs.change_password')
+
+
                                         @include('pages.profile.own.tabs.bid')
 
                                         @include('pages.profile.own.tabs.project')

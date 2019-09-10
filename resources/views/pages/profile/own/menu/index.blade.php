@@ -3,5 +3,5 @@
     <li><a href="#active" data-toggle="tab"><i class="fa fa-comments"></i> Proyek Ku</a></li>
     <li><a href="#bid" data-toggle="tab"><i class="fa fa-file-text"></i> Penawaran Ku</a></li>
     <li><a href="#update-profile" data-toggle="tab"><i class="fa fa-shopping-basket"></i> Perbarui Profil</a></li>
-    <li><a href="#shortlists" data-toggle="tab"><i class="fa fa-heart"></i> Ganti Password</a></li>
+    <li><a href="#change-password" data-toggle="tab"><i class="fa fa-heart"></i> Ganti Password</a></li>
 </ul>
