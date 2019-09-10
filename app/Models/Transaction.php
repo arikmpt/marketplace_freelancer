@@ -11,7 +11,7 @@ class Transaction extends Model
     protected $fillable = [
         'project_id','owner_id','winner_id','price','unique_code',
         'fee_percentage','fee_price','is_paid','is_confirmation',
-        'is_reject','is_upload'
+        'is_reject','is_upload','upload_receipt'
     ];
 
     public function project()
