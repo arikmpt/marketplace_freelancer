@@ -16,7 +16,7 @@ class Transaction extends Model
 
     public function project()
     {
-        return $this->belongsTo(Transaction::class, 'project_id');
+        return $this->belongsTo(Project::class, 'project_id');
     }
 
     public function owner()

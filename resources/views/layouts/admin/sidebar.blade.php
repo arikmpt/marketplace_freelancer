@@ -25,6 +25,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('admin.transaction.index') }}">
+              <i class="fa fa-money"></i> <span>Transaction</span>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('admin.user.index') }}">
               <i class="fa fa-users"></i> <span>User</span>
             </a>

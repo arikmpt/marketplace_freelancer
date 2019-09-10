@@ -89,6 +89,10 @@ Route::group(['prefix' => 'backyard', 'as' => 'admin.','namespace' => 'Admin'], 
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('/','UserController@index')->name('index');
     });
+
+    Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
+        Route::get('/','TransactionController@index')->name('index');
+    });
     
     Route::group(['prefix' => 'project', 'as' => 'project.'], function () {
         Route::get('/','ProjectController@index')->name('index');
