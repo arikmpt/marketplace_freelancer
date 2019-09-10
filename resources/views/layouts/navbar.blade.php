@@ -14,13 +14,7 @@
                         <li><a href="{{ route('homepage') }}" title="Beranda" itemprop="url">Beranda</a></li>
                         <li><a href="{{ route('project.list') }}" title="Pekerjaan" itemprop="url">Pekerjaan</a></li>
                         @auth
-                            <li class="menu-item-has-children"><a href="#" title="Pekerjaan" itemprop="url">Akun Saya</a>
-                                <ul class="sub-dropdown">
-                                    <li><a href="{{ route('profile.project.list') }}" title="Pekerjaan Ku" itemprop="url">Pekerjaan Saya</a></li>
-                                    <li><a href="index2.html" title="Penawaran Ku" itemprop="url">Penawaran Saya</a></li>
-                                    <li><a href="{{ route('profile.me') }}" title="Pengaturan" itemprop="url">Pengaturan</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="{{ route('profile.me') }}" title="Pekerjaan" itemprop="url">Akun Saya</a></li>
                             <li>
                                 <a href="{{ route('auth.logout') }}" title="Keluar" itemprop="url">Keluar</a>
                             </li>
