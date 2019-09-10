@@ -32,7 +32,7 @@ class ProjectController extends Controller
 
         return view('pages.projects.guest.list')
         ->with([
-            'projects' => Project::where('is_approve', 1)->where('category_id', $category->id)
+            'projects' => Project::where('is_approve', 1)->where('winner_id',null)->where('category_id', $category->id)
                     ->where('created_at', '>', Carbon::now()->subDays(15))->paginate(15),
             'categories' => Category::get()
         ]);
