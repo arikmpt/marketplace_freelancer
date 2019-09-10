@@ -23,7 +23,7 @@
                     <div class="sec-box">
                         <div class="dashboard-tabs-wrapper">
                             <div class="row">
-                                <div class="col-md-4 col-sm-12 col-lg-4">
+                                <div class="col-md-3 col-sm-12 col-lg-3">
                                     <div class="profile-sidebar brd-rd5 wow fadeIn" data-wow-delay="0.2s">
                                         <div class="profile-sidebar-inner brd-rd5">
                                             <div class="user-info red-bg">
@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8 col-sm-12 col-lg-8">
+                                <div class="col-md-9 col-sm-12 col-lg-9">
                                     <div class="tab-content">
                                         <div class="tab-pane fade in active" id="active">
                                             <div class="tabs-wrp brd-rd5">
@@ -51,35 +51,57 @@
                                                 @foreach($projects as $project)
                                                     <div class="review-list" style="margin-bottom: 40px">
                                                         <div class="review-box brd-rd5">
-                                                            <h4 itemprop="headline" style="width: 100%;">
+                                                            @if(!$project->is_approve)
+                                                                <div class="text-right pull-right">
+                                                                    <a href="{{ route('profile.project.edit', $project->uuid) }}" class="btn btn-transparent"><i class="fa fa-pencil"></i></a>
+                                                                    <button type="button" class="btn btn-red btn-delete"><i class="fa fa-trash"></i></button>
+                                                                </div>
+                                                                {!! Form::open(['id' => 'formDelete','route' => 'profile.project.delete']) !!}
+                                                                    {!! Form::hidden('id', $project->id) !!}
+                                                                {!! Form::close() !!}
+                                                            @endif
+                                                            <h4 itemprop="headline" style="width: 100%; margin-bottom: 25px;">
                                                                 <a href="{{ route('profile.project.detail', $project->uuid) }}" title="" itemprop="url">{{ $project->title }}</a>
-                                                                @if(!$project->is_approve)
-                                                                    <div class="text-right pull-right">
-                                                                        <a href="{{ route('profile.project.edit', $project->uuid) }}" class="btn btn-transparent"><i class="fa fa-pencil"></i></a>
-                                                                        <button type="button" class="btn btn-red btn-delete"><i class="fa fa-trash"></i></button>
-                                                                    </div>
-                                                                    {!! Form::open(['id' => 'formDelete','route' => 'profile.project.delete']) !!}
-                                                                        {!! Form::hidden('id', $project->id) !!}
-                                                                    {!! Form::close() !!}
-                                                                @endif
                                                             </h4>
-                                                            <div>
-                                                                <span class="food-types">Harga:</span>
-                                                                <span>Rp {{ $project->published_budget }}</span>
-                                                            </div>
-                                                            <div class="text-left">
-                                                                <p style="width: 100%; margin-bottom: 0">Keahlian : 
-                                                                    @foreach($project->skills as $skill)
-                                                                        {{ $skill->name.','}}
-                                                                    @endforeach
-                                                                </p>
-                                                                @if($project->is_approve == 0 && $project->is_reject == 0)
-                                                                    <p style="width: 100%"> Status : Sedang Direview Admin</p>
-                                                                @elseif($project->is_reject == 1 && $project->is_approve == 0)
-                                                                    <p style="width: 100%"> Status : Di Tolak Admin</p>
-                                                                @elseif($project->is_reject == 0 && $project->is_approve == 1)
-                                                                    <p style="width: 100%"> Status : Di Setujui Admin</p>
-                                                                @endif
+                                                            <div class="row" style="margin-bottom: 25px;">
+                                                                <div class="col-md-5">
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Harga :</span>
+                                                                        <span>Rp {{ $project->published_budget }}</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Total Penawaran :</span>
+                                                                        <span>{{ $project->bids->count() }}</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Status :</span>
+                                                                        <span>{{ $project->status }}</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Lama Pengerjaan :</span>
+                                                                        <span>{{ $project->status }} Hari</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-7">
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Tawaran Yang Disetujui :</span>
+                                                                        <span>{{ $project->published_budget }}</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Harga Yang Disepakati:</span>
+                                                                        <span>{{ $project->bids->count() }}</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Kadaluarsa Pada :</span>
+                                                                        <span>{{ $project->status }}</span>
+                                                                    </div>
+                                                                    <div class="w100 pull-left">
+                                                                        <span class="food-types">Keahlian Yang Dibutuhkan : </span>
+                                                                        @foreach($project->skills as $skill)
+                                                                            <span>{{ $skill->name.','}}</span>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             {!! $project->description !!}
                                                         </div>

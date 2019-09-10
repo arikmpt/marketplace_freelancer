@@ -48,7 +48,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="sec-box">
-                        <h4>Total Penawaran</h4>
+                        <h4 class="title-section">Total Penawaran</h4>
                         <ul class="dishes-list">
                             @foreach($project->bids as $bid)
                                 <li class="wow fadeInUp" data-wow-delay="0.1s">
@@ -62,7 +62,7 @@
                                         <div class="featured-restaurant-info">
                                             <h4 itemprop="headline"><a href="#" title="" itemprop="url"></a></h4>
                                             <span class="price">Rp {{ $bid->price }}</span>
-                                            <p itemprop="description">{{ $bid->description }}</p>>
+                                            <p itemprop="description">{{ $bid->description }}</p>
                                         </div>
                                         <div class="ord-btn">
                                             <a class="brd-rd2" href="#" title="Order Now" itemprop="url">Pilih Penawaran</a>

@@ -23,6 +23,16 @@ class Project extends Model
         'is_expire','category_id','user_id'
     ];
 
+    public function getTitleAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = strtolower($value);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');

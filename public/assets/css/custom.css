@@ -72,3 +72,16 @@ nav > div > ul {
     color: #000;
     margin-bottom: 0px;
 }
+
+.title-section {
+    margin-bottom: 35px;
+    border-bottom: 1px solid #e4e3e3;
+}
+
+.w100 {
+    width: 100%;
+}
+
+span.food-types {
+    margin-bottom: 0px;
+}
