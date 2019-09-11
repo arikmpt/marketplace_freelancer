@@ -85,3 +85,7 @@ nav > div > ul {
 span.food-types {
     margin-bottom: 0px;
 }
+
+.no-br {
+    border: none;
+}

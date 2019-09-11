@@ -36,7 +36,7 @@
                                             @endif
                                         </div>
                                     </div>
-
+                                    @auth()
                                     <div class="restaurant-detail-wrapper">
                                         <h4 style="margin-top: 80px;">Ajukan Penawaran Anda</h4>
                                         {!! Form::open(['route' => 'project.bid.store', 'style' => 'margin-top: 15px;','class' => 'form-bid']) !!}
@@ -55,10 +55,14 @@
                                             <button type="submit" class="btn btn-red btn-block">Ajukan</button>
                                         {!! Form::close() !!}
                                     </div>
+                                    @endauth
+                                    <div class="restaurant-detail-wrapper" style="margin-top: 90px;">
+                                        <a href="{{ route('auth.login.index') }}" class="btn btn-red">Silakan Masuk Untuk Mengajukan Penawaran</a>
+                                    </div>
                                 </div>
                                 <div class="col-md-5 col-sm-12 col-lg-4">
                                     <div class="order-wrapper right wow fadeIn" data-wow-delay="0.2s">
-                                        <div class="order-inner gradient-brd">
+                                        <div class="order-inner no-br">
                                             <h4 itemprop="headline">Info</h4>
                                             <div class="order-list-wrapper" style="padding: 0 15px;">
                                                 <div class="row">
@@ -78,6 +82,7 @@
                             </div>
                         </div>
                     </div>
+                    @auth()
                     <div class="sec-box">
                         <div class="sec-wrapper">
                             <h4>Total Penawaran</h4>
@@ -97,6 +102,7 @@
                             </div>
                         </div>
                     </div>
+                    @endauth
                 </div>
             </div>
         </div>
