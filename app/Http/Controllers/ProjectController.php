@@ -110,14 +110,17 @@ class ProjectController extends Controller
 
         $store = Crud::save($project, $data);
 
-        foreach($request->skills as $skill)
+        if($request->skills)
         {
-            $form['project_id'] = $store->id;
-            $form['name'] = $skill;
-            $save = Crud::save($projectskill, $form);
+            foreach($request->skills as $skill)
+            {
+                $form['project_id'] = $store->id;
+                $form['name'] = $skill;
+                $save = Crud::save($projectskill, $form);
+            }
         }
 
-        return $save ? redirect()->route('profile.project.list')->with('success','Proyek Berhasil Di ajukan, Silakan Tunggu Verifikasi Dari Admin')
+        return $store ? redirect()->route('profile.me')->with('success','Proyek Berhasil Di ajukan, Silakan Tunggu Verifikasi Dari Admin')
                 : redirect()->back()->with('danger','Terjadi Kesalahan')->withInput();
     }
 
@@ -144,16 +147,20 @@ class ProjectController extends Controller
         // dd($data);
         $store = Crud::update($project, $data, 'id', $request->id);
 
-        $delete = $projectskill->where('project_id', $request->id)->delete(); 
-
-        foreach($request->skills as $skill)
+        
+        if($request->skills)
         {
-            $form['project_id'] = $request->id;
-            $form['name'] = $skill;
-            $save = Crud::save($projectskill, $form);
+            $delete = $projectskill->where('project_id', $request->id)->delete(); 
+
+            foreach($request->skills as $skill)
+            {
+                $form['project_id'] = $request->id;
+                $form['name'] = $skill;
+                $save = Crud::save($projectskill, $form);
+            }
         }
 
-        return $save ? redirect()->route('profile.project.list')->with('success','Proyek Berhasil Di ajukan, Silakan Tunggu Verifikasi Dari Admin')
+        return $store ? redirect()->route('profile.me')->with('success','Proyek Berhasil Di ajukan, Silakan Tunggu Verifikasi Dari Admin')
                 : redirect()->back()->with('danger','Terjadi Kesalahan')->withInput();
     }
 
@@ -164,7 +171,7 @@ class ProjectController extends Controller
 
         $destroy = $data->delete();
 
-        return $destroy ? redirect()->route('profile.project.list')->with('success','Proyek Berhasil Di hapus')
+        return $destroy ? redirect()->route('profile.me')->with('success','Proyek Berhasil Di hapus')
                 : redirect()->back()->with('danger','Terjadi Kesalahan');
     }
 
@@ -175,5 +182,15 @@ class ProjectController extends Controller
         $process = Storage::disk('public')->put($path, file_get_contents($data),'public');
 
         return $path;
+    }
+
+    public function workerDone(Request $request)
+    {
+        $data = $project->where('id', $request->id)->firstOrFail();
+        $data->is_worker_done = 1;
+        $data->save();
+
+        return $data ? redirect()->route('profile.project.list')->with('success','Proyek Berhasil Di Nyatakan Selesai')
+                : redirect()->back()->with('danger','Terjadi Kesalahan');
     }
 }

@@ -42,7 +42,7 @@ Route::group(['prefix' => 'projects','as' => 'project.'], function () {
 Route::group(['prefix' => 'profile','as' => 'profile.'], function () {
 
     Route::get('/me','ProfileController@my')->name('me');
-    Route::get('/{uuid}','ProfileController@guest')->name('guest');
+    Route::get('/guest/{uuid}','ProfileController@guest')->name('guest');
     Route::post('/update', 'ProfileController@update')->name('update');
     Route::post('/changepassword', 'ProfileController@changePassword')->name('change.password');
 
@@ -55,6 +55,7 @@ Route::group(['prefix' => 'profile','as' => 'profile.'], function () {
         Route::post('/save','ProjectController@save')->name('save');
         Route::post('/update','ProjectController@update')->name('update');
         Route::post('/delete','ProjectController@delete')->name('delete');
+        Route::post('/worker/done','ProjectController@workerDone')->name('worker.done');
 
         Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
             Route::post('/','TransactionController@getTransaction')->name('get.transaction');

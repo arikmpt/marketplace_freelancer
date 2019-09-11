@@ -24,6 +24,14 @@
                         <div class="text-right">
                             <button type="button" class="btn btn-red confirm-payment " data-id="{{ $project->id }}" data-toggle="modal" data-target="#confirmPayment">Konfirmasi Pembayaran</button>
                         </div>
+                    @elseif($project->is_worker_done == 0 && $project->winner_id == Auth::user()->id)
+                        <div class="text-right">
+                            {!! Form::open(['route' => 'profile.project.worker.done','id' =>'worker-done-form']) !!}
+                                {!! Form::hidden('id', $project->id) !!}
+                            {!! Form::close() !!}
+                                <button type="submit" class="btn btn-red worker-done">Nyatakan Selesai</button>
+                            <button type="button" class="btn btn-red confirm-payment">Batalkan Proyek</button>
+                        </div>
                     @endif
                     <h4 itemprop="headline" style="width: 100%; margin-bottom: 25px; margin-top: 45px;">
                         <a href="{{ route('profile.project.detail', $project->uuid) }}" title="" itemprop="url">{{ $project->title }}</a>
@@ -50,7 +58,9 @@
                         <div class="col-md-7">
                             <div class="w100 pull-left">
                                 <span class="food-types">Tawaran Yang Disetujui :</span>
-                                <a href="{{ route('profile.guest', $project->winner ? $project->winner->uuid : null ) }}">{{ $project->winner ? $project->winner->username : '-' }}</a>
+                                @if($project->winner)
+                                    <a href="{{ route('profile.guest', $project->winner ? $project->winner->uuid : null ) }}">{{ $project->winner ? $project->winner->username : '-' }}</a>
+                                @endif
                             </div>
                             <div class="w100 pull-left">
                                 <span class="food-types">Harga Yang Disepakati:</span>

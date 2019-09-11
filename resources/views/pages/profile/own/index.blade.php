@@ -59,11 +59,54 @@
 </section>
 @endsection
 @push('scripts')
+    <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.select2').select2({
                 theme: 'bootstrap'
             });
+
+            $(document).on('click','.btn-delete', function() {
+                Swal.fire({
+                title: 'Apakah kamu yakin untuk menghapus proyek ini ?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batalkan',
+                confirmButtonText: 'Iya!'
+                }).then((result) => {
+                if (result.value) {
+                    $("#formDelete").submit();
+                }
+                })
+            })
+
+            $('.do-payment').on('click', function(e) {
+                e.preventDefault()
+                $.ajax({
+                    url : "{{ route('profile.project.transaction.get.transaction') }}",
+                    headers: {
+                        'X-CSRF-Token': "{{ csrf_token() }}"
+                    },
+                    type: "POST",
+                    data : {
+                        id : $(".do-payment").data("id")
+                    },
+                    success : function(result) {
+                        $("#doPayment").modal('show')
+                        $("#id").val(result.data.id)
+                        $(".price-get-transaction").text(result.data.price + result.data.unique_code)
+                    },
+                    error : function(err) {
+                        console.log(err)
+                    }
+                })
+            })
+
+            $('.confirm-payment').on('click', function(e) {
+                $("#id_confirm_payment").val($(".confirm-payment").data('id'))
+            })
 
             $('#state').on('change', function() {
                 $.ajax({

@@ -68,6 +68,11 @@
                                                                 <div class="text-right">
                                                                     <button type="button" class="btn btn-red confirm-payment " data-id="{{ $project->id }}" data-toggle="modal" data-target="#confirmPayment">Konfirmasi Pembayaran</button>
                                                                 </div>
+                                                            @elseif($project->is_worker_done == 0 && $project->is_owner_done == 0)
+                                                                <div class="text-right">
+                                                                    <button type="button" class="btn btn-red worker-done">Nyatakan Selesai</button>
+                                                                    <button type="button" class="btn btn-red confirm-payment">Batalkan Proyek</button>
+                                                                </div>
                                                             @endif
                                                             <h4 itemprop="headline" style="width: 100%; margin-bottom: 25px; margin-top: 45px;">
                                                                 <a href="{{ route('profile.project.detail', $project->uuid) }}" title="" itemprop="url">{{ $project->title }}</a>

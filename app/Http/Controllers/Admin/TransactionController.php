@@ -87,7 +87,7 @@ class TransactionController extends Controller
         $transaction->save();
 
         $project = Project::where('id', $transaction->project_id)->firstOrFail();
-        $project->status = 'Proyek Sudah Bisa Di Kerjaan';
+        $project->status = 'proyek sudah bisa di kerjaan';
         $project->save();
 
         return $transaction ? redirect()->back()->with('success', 'Konfirmasi Berhasil')
