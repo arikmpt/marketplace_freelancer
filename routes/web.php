@@ -37,13 +37,13 @@ Route::group(['prefix' => 'projects','as' => 'project.'], function () {
     Route::get('/category/{slug}/list', 'ProjectController@guestListByCategory')->name('list.category');
     Route::get('/detail/{uuid}','ProjectController@guestDetail')->name('detail');
 
-    Route::group(['prefix' => 'bid','as' =>'bid.'], function () {
+    Route::group(['prefix' => 'bid','as' =>'bid.','middleware' => 'auth'], function () {
         Route::post('/save','BidController@store')->name('store');
         Route::post('/choose','BidController@chooseWinner')->name('choose.winner');
     });
 });
 
-Route::group(['prefix' => 'profile','as' => 'profile.'], function () {
+Route::group(['prefix' => 'profile','as' => 'profile.','middleware' => 'auth'], function () {
 
     Route::get('/me','ProfileController@my')->name('me');
     Route::get('/guest/{uuid}','ProfileController@guest')->name('guest');
@@ -84,7 +84,7 @@ Route::group(['prefix' => 'misc','as' => 'misc.'], function () {
 Route::get('/admin/login','Auth\LoginController@indexAdmin')->name('index');
 Route::post('/admin/login/process','Auth\LoginController@loginAdmin')->name('admin.login.process');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.','namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.','namespace' => 'Admin','middleware' => 'auth'], function () {
 
     
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
