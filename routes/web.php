@@ -119,6 +119,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.','namespace' => 'Admin'], fun
         Route::get('/detail/{uuid}','PageController@detail')->name('detail');
         Route::post('/save','PageController@store')->name('save');
         Route::post('/update','PageController@update')->name('update');
+        Route::delete('/delete','PageController@delete')->name('delete');
     });
 
 });

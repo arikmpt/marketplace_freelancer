@@ -86,7 +86,7 @@ class PageController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:pages',
+            'title' => 'required|unique:pages,title,'.$request->id,
             'description' => 'required|min:50',
         ]);
 
@@ -103,6 +103,15 @@ class PageController extends Controller
         return $page ? redirect()->route('admin.page.index')->with('success', 'Halaman Berhasil Di Sunting')
             : redirect()->back()->with('danger','Terjadi Kesalahan');
 
+    }
+
+    public function delete(Request $request)
+    {
+        $delete = Page::where('id', $request->id)->firstOrFail();
+        $delete->delete();
+
+        return $delete ? redirect()->route('admin.page.index')->with('success', 'Halaman Berhasil Di Hapus')
+            : redirect()->back()->with('danger','Terjadi Kesalahan');
     }
 
     public function detail($uuid)
