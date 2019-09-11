@@ -194,4 +194,16 @@ class ProjectController extends Controller
         return $data ? redirect()->route('profile.me')->with('success','Proyek Berhasil Di Nyatakan Selesai')
                 : redirect()->back()->with('danger','Terjadi Kesalahan');
     }
+
+    public function ownerDone(Request $request)
+    {
+        $data = Project::where('id', $request->id)->firstOrFail();
+        $data->is_owner_done = 1;
+        $data->status = 'project selesai';
+        $data->is_expire = 1;
+        $data->save();
+
+        return $data ? redirect()->route('profile.me')->with('success','Proyek Berhasil Di Nyatakan Selesai')
+                : redirect()->back()->with('danger','Terjadi Kesalahan');
+    }
 }

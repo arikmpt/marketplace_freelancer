@@ -32,6 +32,14 @@
                                 <button type="submit" class="btn btn-red worker-done">Nyatakan Selesai</button>
                             <button type="button" class="btn btn-red confirm-payment">Batalkan Proyek</button>
                         </div>
+                    @elseif($project->is_worker_done == 1 && $project->user_id == Auth::user()->id)
+                        <div class="text-right">
+                            {!! Form::open(['route' => 'profile.project.owner.done','id' =>'owner-done-form']) !!}
+                                {!! Form::hidden('id', $project->id) !!}
+                            {!! Form::close() !!}
+                                <button type="submit" class="btn btn-red owner-done">Nyatakan Selesai</button>
+                            <button type="button" class="btn btn-red confirm-payment">Batalkan Proyek</button>
+                        </div>
                     @endif
                     <h4 itemprop="headline" style="width: 100%; margin-bottom: 25px; margin-top: 45px;">
                         <a href="{{ route('profile.project.detail', $project->uuid) }}" title="" itemprop="url">{{ $project->title }}</a>
