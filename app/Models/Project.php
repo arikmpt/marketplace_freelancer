@@ -20,7 +20,8 @@ class Project extends Model
 
     protected $fillable = [
         'title','description','finish_day','published_budget','attachment',
-        'is_expire','category_id','user_id','status','winner_id','accept_price'
+        'is_expire','category_id','user_id','status','winner_id','accept_price',
+        'is_owner_done','is_worker_done'
     ];
 
     public function getTitleAttribute($value)
