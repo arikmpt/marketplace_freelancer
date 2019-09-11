@@ -82,6 +82,22 @@
                 })
             })
 
+            $(document).on('click','.worker-done', function() {
+                Swal.fire({
+                title: 'Apakah kamu yakin untuk menyatakan proyek ini selesai ?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batalkan',
+                confirmButtonText: 'Iya!'
+                }).then((result) => {
+                if (result.value) {
+                    $("#worker-done-form").submit();
+                }
+                })
+            })
+
             $('.do-payment').on('click', function(e) {
                 e.preventDefault()
                 $.ajax({

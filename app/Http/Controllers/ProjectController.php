@@ -186,11 +186,12 @@ class ProjectController extends Controller
 
     public function workerDone(Request $request)
     {
-        $data = $project->where('id', $request->id)->firstOrFail();
+        $data = Project::where('id', $request->id)->firstOrFail();
         $data->is_worker_done = 1;
+        $data->status = 'worker menyatakan project ini selesai';
         $data->save();
 
-        return $data ? redirect()->route('profile.project.list')->with('success','Proyek Berhasil Di Nyatakan Selesai')
+        return $data ? redirect()->route('profile.me')->with('success','Proyek Berhasil Di Nyatakan Selesai')
                 : redirect()->back()->with('danger','Terjadi Kesalahan');
     }
 }

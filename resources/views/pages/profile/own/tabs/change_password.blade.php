@@ -1,4 +1,4 @@
-<div class="tab-pane fade in active" id="change-password">
+<div class="tab-pane fade" id="change-password">
     <div class="dashboard-wrapper dashboard-profile brd-rd5">
         <div class="dashboard-title">
             <h4 itemprop="headline">Ganti Password</h4>
