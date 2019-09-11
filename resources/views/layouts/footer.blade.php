@@ -1,7 +1,9 @@
 <?php
     use App\Models\Page;
+    use App\Models\Contact;
 
     $arrs = Page::get();
+    $contact = Contact::first();
 ?>
 
 <footer>
@@ -36,9 +38,15 @@
                                 <div class="widget get_in_touch wow fadeIn" data-wow-delay="0.4s">
                                     <h4 class="widget-title" itemprop="headline">Hubungi Kami</h4>
                                     <ul>
-                                       <li><i class="fa fa-map-marker"></i> 123 New Design Str, ABC Building, melbourne, Australia.</li>
-                                       <li><i class="fa fa-phone"></i> (0044) 8647 1234 587</li>
-                                       <li><i class="fa fa-envelope"></i> <a href="#" title="" itemprop="url">hello@yourdomain.com</a></li>
+                                        @if($contact && $contact->address != null && $contact->address != "" )
+                                            <li><i class="fa fa-map-marker"></i> {{ $contact->address }}</li>
+                                        @endif
+                                        @if($contact && $contact->phone != null && $contact->phone != "")
+                                            <li><i class="fa fa-phone"></i> {{ $contact->phone }}</li>
+                                        @endif
+                                        @if($contact && $contact->email != null && $contact->email != "")
+                                            <li><i class="fa fa-envelope"></i> <a href="#" title="" itemprop="url">{{ $contact->email }}</a></li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
