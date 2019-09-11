@@ -84,7 +84,7 @@ Route::group(['prefix' => 'misc','as' => 'misc.'], function () {
 Route::get('/admin/login','Auth\LoginController@indexAdmin')->name('index');
 Route::post('/admin/login/process','Auth\LoginController@loginAdmin')->name('admin.login.process');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.','namespace' => 'Admin','middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.','namespace' => 'Admin','middleware' => ['auth','isadmin']], function () {
 
     
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
