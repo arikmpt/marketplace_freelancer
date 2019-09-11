@@ -9,6 +9,10 @@
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">{{ $page->title }}</h3>
+            <div class="pull-right">
+                <a href="#" class="btn btn-danger">Remove</a>
+                <a href="{{ route('admin.page.edit', $page->slug) }}" class="btn btn-info">Edit</a>
+            </div>
         </div>
         <div class="box-body">
             {!! $page->description !!}

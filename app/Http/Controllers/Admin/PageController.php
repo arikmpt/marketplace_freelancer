@@ -54,6 +54,13 @@ class PageController extends Controller
         return view('pages.admin.pages.new');
     }
 
+    public function edit($slug)
+    {
+        $page = Page::where('slug', $slug)->firstOrFail();
+        return view('pages.admin.pages.edit')
+            ->with(['page' => $page]);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -72,6 +79,28 @@ class PageController extends Controller
         $page->save();
 
         return $page ? redirect()->route('admin.page.index')->with('success', 'Halaman Baru Berhasil Di Simpan')
+            : redirect()->back()->with('danger','Terjadi Kesalahan');
+
+    }
+
+    public function update(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|unique:pages',
+            'description' => 'required|min:50',
+        ]);
+
+        if($validator->fails())
+            return redirect()->back()->withErrors($validator)->withInput();
+
+        $page = Page::where('id', $request->id)->firstOrFail();
+        $page->title = $request->title;
+        $page->slug = str_replace(' ', '-', $request->title);
+        $page->description = $request->description;
+
+        $page->save();
+
+        return $page ? redirect()->route('admin.page.index')->with('success', 'Halaman Berhasil Di Sunting')
             : redirect()->back()->with('danger','Terjadi Kesalahan');
 
     }
