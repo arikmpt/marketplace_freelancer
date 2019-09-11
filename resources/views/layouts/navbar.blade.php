@@ -3,7 +3,7 @@
         <div class="container">
             <div class="logo">
                 <h1 itemprop="headline">
-                    <a href="index-2.html" title="Home" itemprop="url">
+                    <a href="{{ route('homepage') }}" title="Home" itemprop="url">
                         <img src="{{ asset('assets/images/logo2.png') }}" alt="logo.png" itemprop="image">
                     </a>
                 </h1>
@@ -34,7 +34,7 @@
 
 <div class="responsive-header">
     <div class="responsive-logomenu">
-        <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="assets/images/logo.png" alt="logo.png" itemprop="image"></a></h1></div>
+        <div class="logo"><h1 itemprop="headline"><a href="{{ route('homepage') }}" title="Home" itemprop="url"><img src="assets/images/logo.png" alt="logo.png" itemprop="image"></a></h1></div>
         <span class="menu-btn yellow-bg brd-rd4"><i class="fa fa-align-justify"></i></span>
     </div>
     <div class="responsive-menu">
