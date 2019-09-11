@@ -39,10 +39,21 @@
               <i class="fa fa-etsy"></i> <span>Page</span>
             </a>
         </li>
-        <li>
-            <a href="{{ route('admin.setting.index') }}">
+        <li class="treeview">
+            <a href="#">
               <i class="fa fa-cog"></i> <span>Setting</span>
+              <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+              </span>
             </a>
+            <ul class="treeview-menu">
+              <li>
+                <a href="{{ route('admin.setting.index') }}">Website</a>
+              </li>
+              <li>
+                <a href="{{ route('admin.contact.index') }}">Contact</a>
+              </li>
+            </ul>
         </li>
       </ul>
     </section>

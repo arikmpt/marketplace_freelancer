@@ -131,4 +131,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.','namespace' => 'Admin'], fun
         Route::post('/save','WebSettingController@store')->name('save');
     });
 
+    Route::group(['prefix' => 'contact', 'as' => 'contact.'], function () {
+        Route::get('/','ContactController@index')->name('index');
+        Route::post('/save','ContactController@store')->name('save');
+    });
+
 });
