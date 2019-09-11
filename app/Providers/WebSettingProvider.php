@@ -23,8 +23,8 @@ class WebSettingProvider extends ServiceProvider
                     'title'     => $website->title,
                     'meta_keyword' => $website->meta_keyword,
                     'meta_description' => $website->meta_description,
-                    'logo' => $website->logo ? asset($website->logo) : null,
-                    'favicon' => $website->favicon ? asset($website->favicon) : null,
+                    'logo' => $website->logo ? asset('storage/'.$website->logo) : null,
+                    'favicon' => $website->favicon ? asset('storage/'.$website->favicon) : null,
                 );
                 
                 Config::set('website', $config);

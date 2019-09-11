@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-4 col-lg-4">
                                 <div class="widget about_widget wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="logo"><h1 itemprop="headline"><a href="#" title="Home" itemprop="url"><img src="assets/images/logo.png" alt="logo.png" itemprop="image"></a></h1></div>
+                                    <div class="logo"><h1 itemprop="headline"><a href="#" title="Home" itemprop="url"><img src="{{ config('website.logo') ? config('website.logo')  : 'https://via.placeholder.com/150?text=no logo'  }}" alt="logo.png" itemprop="image" style="width: 80px;"></a></h1></div>
                                     <div class="social2">
                                         <a class="brd-rd50" href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook"></i></a>
                                         <a class="brd-rd50" href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>

@@ -4,7 +4,7 @@
             <div class="logo">
                 <h1 itemprop="headline">
                     <a href="{{ route('homepage') }}" title="Home" itemprop="url">
-                        <img src="{{ asset('assets/images/logo2.png') }}" alt="logo.png" itemprop="image">
+                        <img src="{{ config('website.logo') ? config('website.logo')  : 'https://via.placeholder.com/150?text=no logo'  }}" alt="logo.png" itemprop="image" style="width: 80px;">
                     </a>
                 </h1>
             </div>
@@ -34,7 +34,9 @@
 
 <div class="responsive-header">
     <div class="responsive-logomenu">
-        <div class="logo"><h1 itemprop="headline"><a href="{{ route('homepage') }}" title="Home" itemprop="url"><img src="assets/images/logo.png" alt="logo.png" itemprop="image"></a></h1></div>
+        <div class="logo"><h1 itemprop="headline"><a href="{{ route('homepage') }}" title="Home" itemprop="url">
+            <img src="{{ config('website.logo') ? config('website.logo')  : 'https://via.placeholder.com/150?text=no logo'  }}" alt="logo.png" itemprop="image" style="width: 60px;">
+        </a></h1></div>
         <span class="menu-btn yellow-bg brd-rd4"><i class="fa fa-align-justify"></i></span>
     </div>
     <div class="responsive-menu">

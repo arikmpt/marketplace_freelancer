@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin Area</title>
+  <meta name="description" content="{{ config('website.meta_description') }}">
+  <meta name="keywords" content="{{ config('website.meta_keyword') }}">
+  <title>{{ config('website.title') }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -40,8 +42,7 @@
   <header class="main-header">
     <!-- Logo -->
     <a href="../../index2.html" class="logo">
-      <span class="logo-mini"><b>A</b>LT</span>
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <img src="{{ config('website.logo') ? config('website.logo')  : 'https://via.placeholder.com/60?text=no logo'  }}" style="width: 60px" alt="">
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
