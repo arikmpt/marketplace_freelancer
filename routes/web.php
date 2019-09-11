@@ -126,4 +126,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.','namespace' => 'Admin'], fun
         Route::delete('/delete','PageController@delete')->name('delete');
     });
 
+    Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
+        Route::get('/','WebSettingController@index')->name('index');
+        Route::post('/save','WebSettingController@store')->name('save');
+    });
+
 });

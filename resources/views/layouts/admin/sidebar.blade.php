@@ -39,6 +39,11 @@
               <i class="fa fa-etsy"></i> <span>Page</span>
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.setting.index') }}">
+              <i class="fa fa-cog"></i> <span>Setting</span>
+            </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="{{ asset('admin/css/jquery.toast.min.css') }}">
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('admin/css/sweetalert.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -134,6 +135,7 @@
 <script src="{{ asset('admin/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin/js/jquery.toast.min.js') }}"></script>
 <script src="{{ asset('admin/js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('assets/js/dropify.min.js') }}"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 @stack('scripts')
 <script>
