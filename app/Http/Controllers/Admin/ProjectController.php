@@ -19,7 +19,7 @@ class ProjectController extends Controller
     {
         if($request->ajax())
         {
-            return datatables($this->table->all())
+            return datatables($this->table->orderBy('id','desc')->get())
             ->addIndexColumn()
             ->addColumn('category_string', function($model) {
                 return $model->category->name;
@@ -52,6 +52,7 @@ class ProjectController extends Controller
             ['data' => 'category_string', 'name' => 'category_string', 'title' => 'Category'],
             ['data' => 'owner', 'name' => 'owner', 'title' => 'Owner'],
             ['data' => 'price', 'name' => 'price', 'title' => 'Published Price'],
+            ['data' => 'status', 'name' => 'status', 'title' => 'Status'],
             [
                 'data' => 'action','title' => '#',
                 'orderable' => false,'searchable' => false,
