@@ -1,3 +1,9 @@
+<?php
+    use App\Models\Page;
+
+    $arrs = Page::get();
+?>
+
 <footer>
     <div class="block top-padd80 bottom-padd80 dark-bg">
         <div class="container">
@@ -20,11 +26,9 @@
                                 <div class="widget information_links wow fadeIn" data-wow-delay="0.2s">
                                     <h4 class="widget-title" itemprop="headline">Halaman Lainnya</h4>
                                     <ul>
-                                        <li><a href="#" title="" itemprop="url">Careers</a></li>
-                                        <li><a href="#" title="" itemprop="url">Investor Relations</a></li>
-                                        <li><a href="#" title="" itemprop="url">Press Releases</a></li>
-                                        <li><a href="#" title="" itemprop="url">Shop with Points</a></li>
-                                        <li><a href="#" title="" itemprop="url">More Branches</a></li>
+                                        @foreach($arrs as $arr)
+                                            <li><a href="{{ route('page.index', $arr->slug) }}" title="" itemprop="url">{{ $arr->title }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>

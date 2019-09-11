@@ -13,6 +13,10 @@
 
 Route::get('/','HomeController@index')->name('homepage');
 
+Route::group(['prefix' => 'page','as' => 'page.'], function () {
+    Route::get('/{slug}','PageController@index')->name('index');
+});
+
 Route::group(['prefix' => 'auth','as' => 'auth.'], function () {
 
     Route::get('/logout','Auth\LoginController@logout')->name('logout');
