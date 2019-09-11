@@ -115,6 +115,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.','namespace' => 'Admin'], fun
     Route::group(['prefix' => 'page', 'as' => 'page.'], function () {
         Route::get('/','PageController@index')->name('index');
         Route::get('/new','PageController@new')->name('new');
+        Route::get('/detail/{uuid}','PageController@detail')->name('detail');
         Route::post('/save','PageController@store')->name('save');
     });
 

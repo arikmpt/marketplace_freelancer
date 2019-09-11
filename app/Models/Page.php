@@ -11,4 +11,14 @@ class Page extends Model
     protected $fillable = [
         'title','slug','description'
     ];
+
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = strtolower($value);
+    }
+
+    public function getTitleAttribute($value)
+    {
+        return ucwords($value);
+    }
 }

@@ -22,6 +22,9 @@ class PageController extends Controller
         {
             return datatables($this->table->all())
             ->addIndexColumn()
+            ->addColumn('action',function($model) {
+                return '<a href="'.route('admin.page.detail', $model->slug).'" class="btn btn-primary">View</a>';
+            })
             ->toJson();
         }
         $html = $this->dataTableHtml($builder);
@@ -37,7 +40,12 @@ class PageController extends Controller
                 'orderable' => false,'searchable' => false,
                 'width' => '24px'
             ],
-            ['data' => 'title', 'name' => 'title', 'title' => 'Title']
+            ['data' => 'title', 'name' => 'title', 'title' => 'Title'],
+            [
+                'data' => 'action','title' => '#','class' => 'text-center',
+                'orderable' => false,'searchable' => false,
+                'width' => '24px'
+            ],
         ]);
     }
 
@@ -66,5 +74,13 @@ class PageController extends Controller
         return $page ? redirect()->route('admin.page.index')->with('success', 'Halaman Baru Berhasil Di Simpan')
             : redirect()->back()->with('danger','Terjadi Kesalahan');
 
+    }
+
+    public function detail($uuid)
+    {
+        $page = Page::where('slug', $uuid)->firstOrFail();
+
+        return view('pages.admin.pages.detail')
+            ->with(['page' => $page]);
     }
 }
