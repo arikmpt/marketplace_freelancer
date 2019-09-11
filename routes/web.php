@@ -81,8 +81,11 @@ Route::group(['prefix' => 'misc','as' => 'misc.'], function () {
 
 
 // admin route group
+Route::get('/admin/login','Auth\LoginController@indexAdmin')->name('index');
+Route::post('/admin/login/process','Auth\LoginController@loginAdmin')->name('admin.login.process');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.','namespace' => 'Admin'], function () {
+
     
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
