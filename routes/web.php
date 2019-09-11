@@ -78,7 +78,7 @@ Route::group(['prefix' => 'misc','as' => 'misc.'], function () {
 
 // admin route group
 
-Route::group(['prefix' => 'backyard', 'as' => 'admin.','namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.','namespace' => 'Admin'], function () {
     
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
@@ -111,4 +111,9 @@ Route::group(['prefix' => 'backyard', 'as' => 'admin.','namespace' => 'Admin'], 
         Route::post('/reject','ProjectController@reject')->name('reject');
         Route::get('/{uuid}','ProjectController@detail')->name('detail');
     });
+
+    Route::group(['prefix' => 'page', 'as' => 'page.'], function () {
+        Route::get('/','PageController@index')->name('index');
+    });
+
 });

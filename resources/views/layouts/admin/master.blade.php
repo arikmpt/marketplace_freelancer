@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="{{ asset('admin/css/skins/_all-skins.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin/css/jquery.dataTables.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin/css/jquery.toast.min.css') }}">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('admin/css/sweetalert.css') }}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -133,6 +134,7 @@
 <script src="{{ asset('admin/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin/js/jquery.toast.min.js') }}"></script>
 <script src="{{ asset('admin/js/sweetalert.min.js') }}"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 @stack('scripts')
 <script>
   $(document).ready(function () {

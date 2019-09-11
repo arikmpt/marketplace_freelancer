@@ -34,6 +34,11 @@
               <i class="fa fa-users"></i> <span>User</span>
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.page.index') }}">
+              <i class="fa fa-etsy"></i> <span>Page</span>
+            </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
