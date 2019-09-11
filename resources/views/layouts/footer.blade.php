@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-md-4 col-sm-4 col-lg-4">
                                 <div class="widget get_in_touch wow fadeIn" data-wow-delay="0.4s">
-                                    <h4 class="widget-title" itemprop="headline">GET IN TOUCH</h4>
+                                    <h4 class="widget-title" itemprop="headline">Hubungi Kami</h4>
                                     <ul>
                                        <li><i class="fa fa-map-marker"></i> 123 New Design Str, ABC Building, melbourne, Australia.</li>
                                        <li><i class="fa fa-phone"></i> (0044) 8647 1234 587</li>
