@@ -48,6 +48,6 @@
 
 <div class="bottom-bar dark-bg text-center">
     <div class="container">
-        <p itemprop="description"><a href="templatespoint.net">Templates Point</a></p>
+        <p itemprop="description"><a href="templatespoint.net">&copy; {{ date('Y') }} Kerja Yuk</a></p>
     </div>
 </div><!-- Bottom Bar -->
